@@ -1,4 +1,23 @@
+| node的helloworld程序：
+```js
+//! program.js
+// 通过在命令行输入`node program.js`来运行，然后在浏览器中打开网址`127.0.0.1:8080`来访问
+var http = require('http');
 
+var server = new http.Server();
+server.listen(8080);
+server.on('request', function(request, response){
+  console.log(request.url); //打印请求网址
+  response.write("Hello World!");
+  response.end();
+});
+
+```
+| Rhino，一种用Java编写的JavaScript解释器。在[mozilla/rhino: Rhino is an open-source implementation of JavaScript written entirely in Java](https://github.com/mozilla/rhino)中具体研究。
+
+| Web浏览器之外的两种运行环境
+- [下载 Rhino - Mozilla 产品与私有技术 | MDN](https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino/Download_Rhino)
+- node
 
 ## 第十二章：服务器端JavaScript
 
