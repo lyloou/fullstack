@@ -31,13 +31,18 @@
 
 
   <script>
+  //! 函数中最后一行代码将作为函数的返回值???(必须显示调用return)
+  function f(){
+    return true;
+  }
+  console.log(f());
 
   //! 对象自动转换字符串
-  var now = new Date();
-  console.log(typeof (now + 1));
-  console.log((now + 1));
-  debugger
-  console.log((now - 1));
+  // var now = new Date();
+  // console.log(typeof (now + 1));
+  // console.log((now + 1));
+  // debugger
+  // console.log((now - 1));
 
   //! 面向对象，类与继承
   // function Point(x, y){
