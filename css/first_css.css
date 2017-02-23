@@ -1,0 +1,52 @@
+body {
+  background-color: white;
+  background-repeat: no-repeat;
+}
+
+p {
+  text-align: center;
+  font-style:  italic;
+  word-spacing: 10px;
+  white-space: wrap;
+  font-weight:  bold;
+  font-variant: small-caps;
+  font-family: monospace;
+  font-size: 26px;
+  border-collapse:separate;
+}
+
+p::first-letter {
+  color:red;
+}
+
+p::first-line {
+  color:red;
+}
+
+p.capitalize {
+  text-transform: capitalize;
+  text-shadow: 3px 3px #ff0000;
+}
+
+p.pos_left {
+  position: relative;;
+  top: 30px;
+  right: 130px;
+}
+
+hr {
+  color: sienna;
+}
+
+a {
+  cursor:crosshair;
+  background-color: #9999ff;
+  text-decoration: none;
+  opacity: 0.5;
+  padding: 16px;
+}
+
+a:hover{
+  background-color: blue;
+  color:white;
+}

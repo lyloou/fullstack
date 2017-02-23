@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>
+    Fun
+  </title>
+
+  <meta charset="utf-8" />
+
+  <style>
+  body {
+    background-color: #242424;
+    color: white;
+  }
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+
+  //! 对象自动转换字符串
+  var now = new Date();
+  console.log(typeof (now + 1));
+  console.log((now + 1));
+  debugger
+  console.log((now - 1));
+
+  //! 面向对象，类与继承
+  // function Point(x, y){
+  //   this.x = x;
+  //   this.y = y;
+  // }
+  //
+  // var p = new Point(3, 4);
+  // console.log("x=" + p.x);
+  // console.log("y=" + p.y);
+  // console.log("r=" + (p.r ? p.r() : "未定义")); // 只有在r定义了之后，调用`r()`方法才有意义；
+  //
+  // Point.prototype.r = function() {
+  //   return Math.sqrt(this.x*this.x + this.y*this.y);
+  // }
+  //
+  // console.log("x=" + p.x);
+  // console.log("y=" + p.y);
+  // console.log("r=" + (p.r ? p.r() : "未定义"));
+
+
+  //! 输入测试
+  // var getInput  = prompt("请输入内容：");
+  // alert("输入的内容是：" + getInput);
+
+  // console.log("start ..........");
+  //
+  // default xml namespace="http://www.w3.org/1999/xhtml";
+  // d = <html>
+  //     <body>
+  //     This is a small red square.
+  //     </body>
+  //     </html>;
+  // var tagname = d.body.name();
+  // console.log(tagname);
+
+
+  //! 解构赋值
+  // let [x, y] = [1, 2];
+  // [x, y] = [x+1,y+1];
+  // [x, y] = [y,x];
+  // console.log([x,y]);
+
+  // let x=1, y=2;
+  // let (x=x+1,y=x+2){
+  //   console.log(x+y);
+  // };
+
+  // console.log(x);
+  // console.log(let (x=x+1,y=x+2) x+y);
+
+  //! let测试
+  // var o = {x:1, y:2};
+  // for(let p in o) console.log(p);
+  // for each(let v in o) console.log(v);
+  // console.log(p);
+
+  // console.log(i);
+  //
+  // const i = 3;
+  // console.log(i);
+
+  //! 正则表达式语句每次调用都会生成新的正则对象；
+  // function getRE(){
+  //   var re = /[a-z]/;
+  //   re.foo = 'bar';
+  //   return re;
+  // }
+  //
+  // var reg = getRE();
+  // re2 = getRE();
+  //
+  // console.log(reg === re2);
+  // reg.foo = "baz";
+  // console.log(re2.foo);
+  // console.log(reg.foo);
+
+  // function f(x){
+  //   console.log(x);
+  // }
+  // f('aabb');
+
+  //! apply和call
+  // var oo = {a:'---oo1', b:2, name:'oo'};
+  // var oo2 = {a:'---992', b:2, name:'oo2'};
+  //
+  // function f (x) {
+  //   console.log(this.a + " x=" + x);
+  // }
+  //
+  // f("ddd");
+  //
+  // f.apply(oo, [3]);
+  // f.call(oo, 'ccass');
+  //
+  // f.apply(oo2, [3]);
+  // f.call(oo2, 'ccass');
+
+  // for(var p in a) {
+  //   console.log("a[" + p + "] = " + a[p]);
+  // }
+
+  //! F
+  // var F = function (){};
+  // console.log(F === F.prototype.constructor);
+
+
+  //! range测试
+  //  function Range(from, to) {
+  //    this.from = from;
+  //    this.to = to;
+  //  }
+   //
+  //  Range.prototype = {
+  //    include: function (x) {
+  //      return this.from <= x && x<= this.to;
+  //    },
+  //    foreach: function (f) {
+  //      for (var x = Math.ceil(this.from); x<this.to; x++){
+  //        f(x);
+  //      }
+  //    },
+  //    toString: function () {
+  //      return "(" + this.from + "..." + this.to + ")";
+  //    }
+   //
+  //  };
+   //
+  //  var r = new  Range(1, 3);
+  //  console.log(r);
+  //  console.log(r.include(2));
+  //  r.foreach(console.log);
+
+  //! 三秒后自动跳转
+  // window.onload = function(){
+  //   setTimeout(window.location="https://github.com/lyloou", 3000);
+  // }
+
+
+    // var v = {
+    //   1:"a",
+    //
+    //   3:"c",
+    //   4:"d",
+    // };
+
+
+
+    // call, apply
+    // function f(x){
+    //   console.log(x);
+    // }
+    //
+    // // f.call(this, 30);
+    // f.apply(this, [30, 31]);
+
+    // 函数中的闭包
+    // function constfuncs() {
+    //   var funcs = [];
+    //   for(var i=0; i<10; i++) {
+    //     funcs[i] = function () {return i;}
+    //   }
+    //   return funcs;
+    // }
+    //
+    // var funcs = constfuncs();
+    // console.log(funcs[4]());
+
+    // var uniqueInteger = (function () {
+    //   var counter = 0;
+    //   return function(){
+    //     return counter++;
+    //   };
+    // });
+
+    //! 闭包和作用域链
+    // var scope = "global";
+    // function checkscope() {
+    //   var scope = "local";
+    //   function f(){return scope;}
+    //   return f;
+    // }
+
+
+    //! 函数也是对象，可以增加属性
+    // function a(x){
+    //   console.log(x);
+    // }
+    // a.dd = "dd";
+    // console.log(a.dd);
+    // a(3);
+
+
+    //! 直接调用匿名函数
+    // (function(){console.log("我是匿名函数，我被调用")}());
+    // (function(x){console.log("我是匿名函数，我被调用=>" + x)})(3);
+
+
+    // // 函数中的函数
+    // function a(){
+    //   console.log("我是a");
+    //   return b;
+    // }
+    //
+    // function b(){
+    //   console.log("我是b");
+    //   return c;
+    // }
+    //
+    // function c(){
+    //   console.log("我是c");
+    // }
+    //
+    // a()()();
+
+    // 自定义函数属性
+    // uniqueInteger.counter = 0;
+    // function uniqueInteger(){
+    //   return uniqueInteger.counter ++;
+    // }
+    // console.log(uniqueInteger());
+    // console.log(uniqueInteger());
+    // console.log(uniqueInteger());
+    // console.log(uniqueInteger());
+
+    // 作为值的函数
+    // var a = [function(x) {return x*x;}, 21];
+    // console.log(a[0](a[1]));
+
+    // function c (){
+    //   console.log(arguments.length);
+    //   // console.log(arguments.callee());
+    // }
+    // c(1, 2, 3);
+
+    // 求一组数组中的最大值
+    // function max() {
+    //   var max = Number.NEGATIVE_INFINITY;
+    //   for(var i=0; i< arguments.length; i++) {
+    //     if(arguments[i] > max) {
+    //       max = arguments[i];
+    //     }
+    //   }
+    //   return max;
+    // }
+    //
+    // console.log(max(1, 5, 2, 5, 7, 100, 'a', 'c'));
+
+    // // 形参和实参
+    // "use strict";
+    // function getPropertyNames(o, /* optional */ a){
+    //   console.log(arguments.length);
+    //   console.log(a);
+    //   a = a || [];
+    //   for (var property in o) a.push(property);
+    //   return a;
+    // }
+    // var e = getPropertyNames({a:1, b:2});
+    // console.log(e);
+    // var b = getPropertyNames({c:3, d:4}, e);
+    // console.log(e);
+
+    // isArray测试
+    // var isArray = Function.isArray || function(o) {
+    //   return typeof o === "object" && Object.prototype.toString.call(o) === "[object Array]";
+    // }
+    //
+    // console.log(isArray([]));
+
+    // foreach测试
+    // function foreach(a, f, t){
+    //   try{
+    //     a.forEach(f, t);
+    //   } catch (e) {
+    //     if(e === foreach.break) return;
+    //     else throw e
+    //   }
+    // }
+    //
+    // foreach.break = new Error("StopIteration");
+    //
+    // function f(x){
+    //   console.log(x);
+    //   if(x == 'b')
+    //   throw foreach.break;
+    // }
+    // foreach(['a', 'b', 'c'], f);
+
+    // 忽略字符串大小写的排序；
+    // var a = ['ant', 'Bug', 'cat', 'Dob'];
+    // console.log(a.sort());
+    //
+    // console.log(a.sort(function(x, y){
+    //   return x.toLowerCase() > y.toLowerCase();
+    // }));
+
+
+    // var table = new Array(10);
+    // for(var i=0; i<table.length; i++) {
+    //   table[i] = new Array(10); // 一维数组里包含的数组
+    // }
+    // console.log(table);
+    //
+    // // 给每个数组填充值
+    // for(var row=0; row < table.length; row++){ // 遍历第一维
+    //   for(col=0; col<table[row].length; col++){
+    //     table[row][col] = row * col;
+    //   }
+    // }
+    // // 逐个打印
+    // for(var i=0; i<table.length; i++) {
+    //   for(var j=0; j<table[i].length; j++) {
+    //     console.log(table[i][j]);
+    //   }
+    // }
+
+    // serialnum测试
+    // var serialnum = {
+    //   $n:0,
+    //   get next() {return ++this.$n;},
+    //   set next(n){
+    //     if(n>this.$n){
+    //       this.$n = n;
+    //     }
+    //     else {
+    //       throw "序列号的值不能比当前值小";
+    //     }
+    //   }
+    // };
+    //
+    // console.log(serialnum.next);
+    // console.log(serialnum.next);
+    // console.log(serialnum.next);
+    // console.log(serialnum.next);
+    // serialnum.next = 2;
+    // console.log(serialnum.next);
+
+    // 对象属性set/get测试
+    // var p = {
+    //   cc:"cc",
+    //   get r(){return this.cc;},
+    //   set r(c){this.cc = c;},
+    // }
+    //
+    // console.log(p.r);
+    // p.r = 132;
+    // console.log(p.r);
+    // console.log(p.cc);
+
+    // 枚举属性
+    // var o = {x:1, y:2, z:3};
+    // console.log(o.propertyIsEnumerable("toString"));
+    // o.c = 0;
+    // o.d = 4;
+    // for(p in o){
+    //   console.log(p);
+    // }
+
+
+    // 只读属性在严格模式下访问会出错误
+    // "use strict"
+    // Object.prototype = 1;
+    // console.log(Object.prototype);
+
+
+    // c = "dd";
+    // "use strict" // 被当作普通的表达式语句对待。
+    // // var eval = 3;
+    // var a = {x:1,x:2};
+    // console.log(a);
+    //
+    // // use strict测试
+    // function f(){
+    //     //c = "da";
+    //     // "use strict"
+    //     console.log(this == undefined);
+    // }
+    //
+    // f();
+
+
+
+    // debugger测试
+    // function f(o) {
+    //   var x = 33;
+    //
+    //   if(o) debugger;
+    //
+    //   x = 34;
+    //   console.log(x);
+    // }
+    // f(0);
+
+    // // ==> with测试
+    // var o = {x:1};
+    // console.log(o); // => {x:1}
+    // with(o) x = 12;
+    // console.log(o); // =>{x: 12}: with语句可以用来修改对象中属性的值。
+    //
+    // var o = {};
+    // with(o) x = 13;
+    // console.log(o); // =>{}:with提供了一种读取o的属性的快捷方式，但是不能创建o的属性。
+    // console.log(x); // =>13:如果o没有属性x, 则相当于这段代码相当于`x=13`
+
+    // ==> if中的函数
+    // function square(x){
+    //   if(x){
+    //     var c = 3;
+    //     function rr(){
+    //       return c;
+    //     }
+    //
+    //   }
+    //
+    //   return rr();
+    // }
+    // console.log(square(30));
+
+    // 异常处理
+    // "use strict"
+    // function f(){
+    //   try{
+    //     console.log("==>");
+    //     c = 5/0;
+    //     throw new Error("error!!!");
+    //     console.log("==>after");
+    //     return 1;
+    //   } catch (e){
+    //     console.log(e);
+    //     console.log("==>error");
+    //   } finally{
+    //     console.log("finally!!!");
+    //     return 33;
+    //   }
+    // }
+    // console.log(f());
+
+
+    // throw new TypeError("cuowle");
+
+
+    // ==> return测试
+    // function cc(){
+    //   return;
+    //   return 1;
+    //   return 2;
+    // }
+    // console.log(cc());
+
+    // // ==>函数声明提前测试；
+    // // 在函数初始化之前调用
+    // console.log("代码定义之前调用=============");
+    // // f1(); // =>TypeError: f1 is not a function
+    // f2(); // => f2
+    //
+    // var f1 = function(){console.log("f1")}
+    // function f2(){console.log("f2")}
+    //
+    // console.log("代码定义之后调用=============");
+    // f1(); // => f1
+    // f2(); // => f2
+
+    // throw测试
+    // var o = {x:1, y:2, z:3};
+    // var a = [], i=0;
+    // for(a[i++] in o);
+    // console.log(a);
+    // throw TypeError("Hahaha");
+
+    // for/in测试
+    // var o = [1, 2, 38, 4, 5, 6, 7, 8];
+    // for(var i in o){
+    //   console.log(o[i]);
+    // }
+
+    // switch测试
+    // var i = 6;
+    // switch(i){
+    //   case 1:
+    //   console.log(1);
+    //   break;
+    //
+    //   default:
+    //   console.log(4);
+    //   break;
+    //
+    //   case 2:
+    //   console.log(2);
+    //   break;
+    //
+    //   case 3:
+    //   console.log(3);
+    //   break;
+    //
+    //
+    // }
+
+    // var x = 3;
+    // var x = 4;
+    // console.log(x);
+    // if(x === 4){
+    //   var f = function(x){
+    //     return x;
+    //   }
+    //   var f = 3;
+    //   console.log(f);
+    //   // console.log(f(1111));
+    // }
+
+    // 复合语句测试
+    // {
+    //   console.log("==>1");
+    //   console.log("==>2");
+    //   console.log("==>3");
+    //   var c = "dd3";
+    // };
+    //
+    // console.log(c);
+
+    // 测试for循环
+    // for(var i=0, j=10; i<j; i++){
+    //   console.log(i+" "+(i+j));
+    // }
+
+    // 测试eval的局部性
+    // var foo = function(a){
+    //   eval("return ;");
+    // }
+    // foo("return;");
+    // 平方
+    // var square = function (x){
+    //   return x * x;
+    // }
+
+    // 数字测试
+    // var c = 0;
+    // 3
+    // 100000000
+    //
+    // console.log(c);
+
+    // 分号测试
+    // function ff(){
+    //   return            true;
+    // }
+    // window.onload = function () {
+    //     console.log(ff());
+    // }
+
+    // JSON解析测试
+    // `wmd taiy`
+    // var a = 1;    var b = 2
+    // console.log(a);
+    // console.log(b);
+    // var jj = JSON.parse(
+    //   '{"a":123, "b":2}'
+    // );
+    // console.log(jj.a);
+
+
+    // ==> 隐藏元素
+    // function hide(e, reflow) {
+    //   if(reflow) {
+    //     e.style.display = "none";
+    //   } else {
+    //     e.style.visibility = "hidden";
+    //   }
+    // }
+
+    // ==> 记录debug日志
+    // function debug(msg){
+    //   var log = document.getElementById("debuglog");
+    //   if(!log) {
+    //     // 创建新元素
+    //     log = document.createElement("div");
+    //     // 赋值id
+    //     log.id = "debuglog";
+    //
+    //     // 内容 innerHTML
+    //     log.innerHTML = "<h1>Debug Log222</h1>";
+    //
+    //     // 添加到文档末尾
+    //     document.body.appendChild(log);
+    //   }
+    //
+    //   var pre = document.createElement("pre");
+    //   var text = document.createTextNode(msg);
+    //   pre.appendChild(text);
+    //   log.appendChild(pre);
+    // }
+
+
+    // ==> 询问问题
+    // function moveon(){
+    //   var answer = confirm("准备好了吗？");
+    //   console.log(answer);
+    //
+    //   if(answer) {
+    //     window.location = "http://taobao.com";
+    //   }
+    // }
+    //
+    // setTimeout(moveon, 3000);
+
+
+    // 原型
+    // function Point(x, y){
+    //   this.x = x;
+    //   this.y = y;
+    // }
+    //
+    // var  p = new Point(3, 4);
+    //
+    // Point.prototype.r = function () {
+    //   return Math.sqrt(this.x * this.x + this.y * this.y);
+    // };
+    //
+    // console.log(p.r());
+
+
+
+    // 文档加载之后运行
+    // window.onload = function () {
+    //   console.log("onload...");
+    //   debug('在onload中' + this);
+    // }
+  </script>
+</head>
+
+<body>
+
+  Just For Fun.
+
+  <hr />
+
+  <!-- <hr />
+  <a href="javascript:void window.open()">打开一个新窗口</a>
+
+  <input type="button" onclick="hide(this, true); debug('已经隐藏了'+this);" id="bb1" value="按我隐藏"/>
+  <input type="button" onclick="hide(this); debug('已经隐藏了'+this);" id="bb1" value="按我隐藏2"/>
+  <input type="button" onclick="hide(this); debug('已经隐藏了'+this);" id="bb1" value="按我隐藏3"/>
+  <input type="button" onclick="hide(this); debug('已经隐藏了'+this);" id="bb1" value="按我隐藏4"/>
+
+  <script>
+    debug('在body中' + this);
+  </script> -->
+</body>
+</html>
