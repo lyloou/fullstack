@@ -14,20 +14,14 @@
   </style>
 
   <script>
-  console.log(document.compatMode);
-  console.log(document.readyState)
+  console.log("====>");
 
-  window.onload = function (){
-    console.log("onload:" + document.readyState)
-  }
+    /*@cc_on
+      @if (@_jscript)
+        console.log("in IE");
+      @end
+      @*/
 
-  document.onreadystatechange = function () {
-    if(document.readyState == "complete"){
-      console.log("rrr: complete");
-    } else if (document.readyState == "interactive") {
-      console.log("rrr: interactive");
-    }
-  }
   </script>
 </head>
 
