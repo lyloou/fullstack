@@ -11,18 +11,36 @@
       color: white;
     }
 
+    a {
+      color: red;
+    }
 
   </style>
 
   <script>
-  // <script src="showdate_title.js">
-  console.log("Hello World!");
-  function ccc(){console.log('checked')};
+  console.log("在onload之外1：" + document.readyState);
+
+  window.onload = function () {
+    console.log("在onload之内：" + document.readyState);
+
+    console.log(this);
+    console.log(arguments.length);
+
+    console.log(dd = arguments[0]);
+    console.log(typeof dd);
+    console.log(dd instanceof Event);
+
+    console.log(window.request);
+  }
+
+  console.log("在onload之外2：" + document.readyState);
+
+  function ccc(){console.log('checked');};
   </script>
 </head>
 
 <body>
-  Just For Fun.
+  <h2>Just For Fun.</h2>
   <hr />
 
   <br />
@@ -30,6 +48,14 @@
   <br />
   <br />
 
+
+
+  <hr />
+    <a href="javascript:alert(new Date().toString())">
+      What time is it?
+    </a>
+
+  <hr />
 
   <a href='javascript:
     var e = "", r = "";
@@ -43,10 +69,17 @@
     } while (e);
     void 0;
   '  >
-    <!-- <a href="javascript:void window.open('about:blank')"> -->
-    <!-- <a href="javascript:new Date().toString()"> -->
-    <!-- <a href="javascript:alert(new Date().toString())"> -->
-    What time is it?
+    数学运算
   </a>
+  <hr />
+
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <script>
+    document.write("利用document.write()输出：Hello World!!!");
+  </script>
 </body>
 </html>
