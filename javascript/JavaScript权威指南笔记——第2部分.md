@@ -1,4 +1,49 @@
 
+| 通过`open()` 的返回值，来获取通过脚本打开的新窗口的window对象。 --p355
+  在新窗口window对象里，通过`window.opener`可以拿到来源窗口的window对象。
+```js
+var w = window.open("http://url1.com");
+w.location = "http://url2.com"; // 通过w来修改新窗口的url
+```
+在新窗口中，可以通过`opener`来操作打开它的脚本的Window对象。
+```js
+var w2 = window.opener;
+w2.location = "http://url3.com"; // 修改引用窗口的url
+```
+
+| `window.open()` --p355
+
+| `showModalDialog()`模态对话框：
+- [BX9036: Opera 和 Chrome 对模态对话框（showModalDialog）的支持有缺陷，且非 IE 浏览器均不支持非模态对话框（showModelessDialog） - W3Help](http://w3help.org/zh-cn/causes/BX9036)
+> showModalDialog 方法与 showModelessDialog 方法均不被 W3C 支持，虽然 showModalDialog 方法目前已比较广泛的被支持，但还是应避免使用它。因为模态对话框会阻塞父窗口的输入，使其失去焦点，这将对用户体验不利。
+ - 对于 showModalDialog 方法可以使用模拟模态对话框的方式，比如通过半透明 DIV 元素遮住页面主体，在其之上显示 "对话框 " 内容。
+ - 对于 showModelessDialog 方法可以使用 window.open 代替。
+
+- [Chrome不支持showModalDialog模态对话框和无法返回returnValue的问题 - 快乐乔巴 - 博客园](http://www.cnblogs.com/chopper/archive/2012/06/25/2556266.html)
+
+| History对象：--p345
+- `back()` 后退；
+- `forward()` 前进；
+- `go()` 接受整数参数，正参数向前，负参数向后跳转任意多个页。
+
+
+| 载入新的文档：--p334
+- `location.assign("./newFile.html")` 可后退；
+- `location.replace("./newFile.html")` 不可后退；
+- `location.reload()` 重新加载；
+
+| `setTimeout()`和`setInterval()`的第一个参数可以作为字符串传入（相当于执行`eval()`）。--p342
+```js
+setTimeout("alert('Hello World!')", 3000);
+```
+
+| `setInterval()`和`setTimeout()`类似，只不过会在指定毫秒数的间隔里重复调用。
+也可以通过`clearInterval()`来取消后续函数的调用。--p342
+
+| `setTimeout()`设置一个函数在指定的毫秒后执行，返回一个值，这个值可以传递给`clearTimeout()`用于取消这个函数的执行；--p342
+
+## 第十四章：Window对象
+
 
 | 使用框架的好处： --p340
 - 用更简洁的代码完成更复杂的功能；
@@ -58,3 +103,6 @@
 
 | p336
 > 对于防止脚本窃取似有的信息来说 => 对于防止脚本窃取私有的信息来说
+
+| p348
+> cookieEnable()  => cookieEnabled
