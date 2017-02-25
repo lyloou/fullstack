@@ -21,12 +21,13 @@
 
   <script>
   window.onerror = function (msg, url, line) {
-    console.log(msg + "  => " + url + " => " + line);
+    var errMsg;
+    console.log(errMsg = msg + "  => " + url + " => " + line);
+    alert(errMsg);
     return true;
   }
 
-  console.log("Helloworld");
-  console.log(5/0);
+  console.log(kk.jj); // kk未定义会抛出异常，异常的处理会被交给onerror回调处理。
   </script>
 </head>
 

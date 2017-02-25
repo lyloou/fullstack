@@ -11,6 +11,20 @@ var w2 = window.opener;
 w2.location = "http://url3.com"; // 修改引用窗口的url
 ```
 
+| 错误处理
+```js
+<script>
+window.onerror = function (msg, url, line) {
+  var errMsg;
+  console.log(errMsg = msg + "  => " + url + " => " + line);
+  alert(errMsg);
+  return true; // 返回true表示已经处理，不需要再继续向上传递了。
+}
+
+console.log(kk.jj); // kk未定义会抛出异常，异常的处理会被交给onerror回调处理。
+</script>
+```
+
 | `window.open()` --p355
 
 | `showModalDialog()`模态对话框：
