@@ -1,4 +1,51 @@
 
+
+| scrollBy滚动偏移量 --p393
+```js
+// 每隔200毫秒向下滚动10像素
+var result = setInterval(function(){scrollBy(0, 10)}, 200);
+// 停止滚动
+clearInterval(result);
+```
+
+| 如果调用`appendChild()`或`insertBefore()`将已存在文档中的一个节点再次插入，
+那个节点将自动从当前的位置删除并在新的位置重新插入：没有必要显示删除该节点。
+（也就是说可以通过这两个方法重新排列节点） --p383
+
+| 对于没有指定`src`属性的`script`标签，是一个嵌入任意文本内容的理想地方。 --p380
+```js
+<script id="sscript">
+  我是脚本里的内容。
+</script>
+
+var ss = document.getElementById("sscript");
+console.log(ss.text);
+```
+
+| 只有`Element`节点定义了`outerHTML`属性，`Document`节点则无。 --p379
+
+| 对innnerHTML属性用`+=`操作符重复追加一小段文本通常效率低下，因为它既要序列化又要解析。 --p379
+
+| 元素的内容
+- 使用HTML表示: `innerHTML()`
+- 纯文本表示: `innerText()/textContent()`，注意两者的支持情况 --p380
+- 树状表示；`nodeValue()`、`nodeType`
+
+| nodeType  --p372
+- 1 代表Element节点
+- 3 代表Text节点
+- 8 代表Comment节点
+- 9 代表Document节点
+- 11 代表DocumentFragment节点
+
+| DOM选取元素：--p364
+- 用指定的id属性：`document.getElementById('id');`
+- 用指定的name属性：`document.getElementsByName('name');`
+- 用指定的标签名字：`document.getElementsByTagName('span');`
+- 用指定的CSS类：`document.getElementsByCLassName('warning')`
+- 匹配指定的CSS选择器：`document.querySelector()`、`document.querySelectorAll()`
+  （中间用逗号`,`分割）
+
 | 通过`open()` 的返回值，来获取通过脚本打开的新窗口的window对象。 --p355
   在新窗口window对象里，通过`window.opener`可以拿到来源窗口的window对象。
 ```js
