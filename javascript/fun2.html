@@ -11,126 +11,79 @@
       color: white;
     }
 
-    div {
-      background-color: #22222f;
-      width: 100%;
-      height: 100%;
+    label {
       display: block;
     }
   </style>
 
   <script>
 
-
-  // console.log('hhh');
-  // console.log('hhh1');
-  // console.log('hhh2');
-
-  // let作用域——在迭代器中的运用；
-  // function counter(start) {
-  //   let nextValue = Math.round(start);
-  //   return {next: function() {
-  //     return nextValue++;
-  //   }};
-  // }
-  //
-  // let serialNumberGenerator = counter(1000);
-  // let sn1 = serialNumberGenerator.next();
-  // let sn2 = serialNumberGenerator.next();
-  // console.log(sn1);
-  // console.log(sn2);
-  //
-  // let serialNumberGenerator2 = counter(1000);
-  // let sn3 = serialNumberGenerator2.next();
-  // let sn4 = serialNumberGenerator2.next();
-  // console.log(sn3);
-  // console.log(sn4);
-
   </script>
 
-  <!-- <script id="sscript">
-  我是没有src属性的`<script>`标签里的内容。
-  </script> -->
 </head>
 
 <body>
-  
-  J
   <div>Just For Fun ...</div>
 
-  <!-- <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>
-  <div>Just For Fun ...</div>  -->
-<!--
-  <span class="sparkline" data-ymin="0" data-ymax="10" data-jquery-test="tttee">
-    1 2 2 2 3  4 5 5 6 7 7 4 2 1
-  </span>
+  <form name="shipping" onreset="return confirm('确认重置？')" onsubmit="return confirm('确认提交？')" method="get">
+    <fieldset>
+      <legend>
+        Shipping Method
+      </legend>
 
-  <form name="form1" value="ddd">
-    <div name="way">
-      who are you?
-    </div>
-  </form> -->
+      <label><input type="radio" name="r1" value="1st"/>First-class</label>
+      <label><input type="radio" name="r1" value="2st"/>2-day Air</label>
+      <label><input type="radio" name="r1" value="overnite"/>Overnight</label>
 
-<!--
-<a href="#ddd">
-  跑到ddd
-</a>
-<hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
-<hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
-<hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
-<hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
-<hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
-<hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
-<hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
-<h2 id="ddd">我是ddd</h2>
--->
+      <label>
+        <input type="reset" value="重置"/>
+      </label>
+
+      <label>
+        <input type="submit" value="提交" />
+      </label>
+
+      <label>
+        <button  value="提交2" name="kkk">提交2&nbsp;&nbsp;</button>
+      </label>
+
+      <label>
+        Arrival Date: <input type="text" name="arrival" placeholder="yyyy-MM-dd">
+      </label>
+
+      <label>
+        Arrival Password: <input type="password" name="arrival_pwd" placeholder="your password">
+      </label>
+
+      <label>
+        Arrival File: <input type="file" name="arrival_file" placeholder="File Name">
+      </label>
+
+
+      <label>
+      <select type="select-multiple" name="r2" value="1st"/>
+        <option value="oo1">oo1</option>
+        <option value="oo2" selected>oo2</option>
+        <option value="oo3" > oo3</option>
+        <option value="oo4"> oo4</option>
+      </select>
+      </label>
+    </fieldset>
+  </form>
+
+  <script>
+    document.write("<br> <hr/>");
+    document.write("document.write()");
+    document.write("<hr/>");
+  </script>
+
+  <pre>
+    <script>
+      document.write("<br> <hr/>");
+      document.writeln("ddd");
+      document.writeln("dd22");
+      document.write("<hr/>");
+    </script>
+  </pre>
 </body>
 </html>

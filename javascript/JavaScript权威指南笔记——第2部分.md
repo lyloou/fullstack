@@ -1,4 +1,23 @@
+| 开启文档编辑模式： --p408
+- `document.body.contenteditable=true`
+- `document.designMode="on"`
 
+| `document.write()` 只有在解析文档时才能使用`write()`方法输出到HTML到文档中。--p405
+
+| 密码输入元素只能防止眼睛窥视，但在提交表单时未经任何加密。 --p402
+
+| [HTML(5) 不要求标签自闭合 – 大魔 I'm Png](http://www.impng.com/web-dev/html-tags-without-self-closing.html)
+`input`标签不要求自闭合。
+
+| 表单元素在收到键盘的焦点时会触发focus事件，失去焦点时会触发blur事件。 --p400
+
+| onsubmit事件处理程序只能通过单击“提交”按钮来触发。直接调用表单的submit()方法不触发onsubmit事件处理程序。
+  onreset事件处理程序只能通过单击“提交”按钮来触发。直接调用表单的reset()方法不触发onreset事件处理程序。 --p400
+
+| HTML表单
+在服务器程序中，表单必须有一个“提交”按钮，否则它就没有用处。
+在客户端编程中，“提交”按钮不是必须的。
+服务端程序是基于表单提交动作的，客户端程序是基于事件的。 --p396
 
 | scrollBy滚动偏移量 --p393
 ```js
