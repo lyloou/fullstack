@@ -1,3 +1,52 @@
+
+
+| 开启和关闭样式表：--p436
+```js
+document.styleSheets[0].disabled = true; // 关闭样式表
+document.styleSheets[0].disabled = false; // 开启样式表
+```
+
+| overflow属性允许指定当内容超出元素边框时该如何显示，而clip属性确切地指定了应该显示元素的
+哪个部分，它不管元素是否溢出。 --p424
+
+| 颜色值：
+颜色值由16进制来表示红绿蓝（RGB）。
+每个颜色最低位为0（16进制为00），最高位为255（16进制为FF）
+16进制值的写法为#号后面跟三个或六个十六进制字符。
+三位数表示法：`#RGB`，转换为6位数表示法：`#RRGGBB`
+- [HTML 颜色值\_w3cschool](http://www.w3cschool.cn/html/html-colorvalues.html)
+
+| visibility和display的区别：
+对于一个常规布局流中的元素，设置visibility属性为hidden使得元素不可见，
+但是在文档布局中仍保留了它的空间。
+如果给display设置了none属性，在文档布局中不再给他分配空间，它各边的元素会合拢，
+就当作不存在。--p422
+
+| 边框盒模型：
+通过给元素指定box-sizing属性`box-sizing:border-box`（默认是`box-sizing:content-box`）
+浏览器会为元素应用IE的盒模型，即width和height属性将包含边框和内边距。--p422
+
+| [CSS 盒子模型\_w3cschool](http://www.w3cschool.cn/css/css-boxmodel.html)
+
+| 第三个维度：`z-index`
+当两个或多个元素重叠在一起的时候，他们是按照从低到高的`z-index`顺序绘制的。
+如果值一样，那么按照在文档中出现的顺序绘制，即最后一个重叠的元素显示在最上面。--p418
+注意：
+`z-index`只对兄弟元素应用堆叠效果。
+
+| 可以通过指定`width`和`height`属性来设置元素的宽度和高度。另外可以通过设置
+`left`、`right`、`top`、`bottom`来指定，
+注意：
+如果同时指定了left、right和width，那么width属性将覆盖right属性。
+如果同时指定了top、bottom和height，那么height属性将覆盖bottom属性。 --p418
+
+
+| 静态定位`static`的元素不能使用top、left和类似其他属性定位。
+欲对文档元素使用CSS定位技术，必先将其position属性设置为除此之外的其他三个属性值：
+`absolute、fixed、relative`  --p417
+
+## 第16章：脚本化CSS
+
 | 开启文档编辑模式： --p408
 - `document.body.contenteditable=true`
 - `document.designMode="on"`
