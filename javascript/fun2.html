@@ -13,7 +13,41 @@
   </style>
 
   <script>
+    // window.onbeforeunload = function () {
+    //   console.log("==> onbeforeload");
+    //   return confirm("确认跳转？");
+    // }
 
+    window.onload = function () {
+      console.log("==> onload");
+
+      var helloBtn = document.getElementById("hello");
+
+
+      helloBtn.addEventListener("click", function(){
+        helloBtn.innerHTML = "是的，我很好3";
+      });
+
+      helloBtn.addEventListener("click", function(){
+        helloBtn.innerHTML = "是的，我很好2";
+      });
+      // setTimeout(function(){
+      //   helloBtn.innerHTML = "是的，我很好";
+      // }, 3000);
+    }
+
+
+    function helloworld () {
+      alert("Hello World!");
+    }
+
+    window.ononline = function () {
+      console.log("ononline");
+    }
+
+    window.onoffline = function () {
+      console.log("onoffline");
+    }
   </script>
 </head>
 
@@ -24,7 +58,14 @@
     What fun ?
   </p>
 
-  <button id="hello" style="background-color:red; opacity:0.50; color:white; border: 0px">你好？</button>
+  <button id="hello" style="background-color:red; opacity:0.50; color:white; border: 0px" onclick="helloworld()">你好？</button>
 
+  <a href="http://lyloou.com">
+    Lou
+  </a>
+
+  <textarea cols=60 rows=20 oninput="this.value = this.value.toUpperCase();">
+
+  </textarea>
 </body>
 </html>

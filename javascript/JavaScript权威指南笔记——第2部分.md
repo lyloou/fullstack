@@ -1,5 +1,96 @@
 
 
+| 事件传播
+- 事件冒泡是事件传播的第三个“阶段”；
+- 目标对象本身的事件处理程序调用是第二个阶段；
+- 第一个阶段甚至发生在目标处理程序调用之前，称为“捕获”阶段；
+
+| 通过时间处理程序的返回值来实现：确认离开当前页？
+```js
+window.onbeforeunload = function () {
+  console.log("==> onbeforeload");
+  return confirm("确认跳转？");
+}
+```
+
+| 相对`addEventListener()`的是`removeEventListener()`方法。--p453
+
+| 能通过多次调用addEventListener()为同一个对象注册同一事件类型的多个处理程序函数。
+当对象上发生事件时，所有该事件类型的注册处理程序都会按照注册的顺序调用。
+使用相同的参数在同一个对象上多次调用addEventListener()是没用的，处理程序仍然只注册一次，
+同时重复调用也不会改变调用处理程序的顺序。 --p453
+
+| 按照约定，事件处理程序属性的名字由“on”后面跟着事件名组成：nclick、onchange、onload、
+onmouseover等。注意这些属性名是区分大小写的，所有都是小写，即使事件类型是由多个词组成。--p451
+
+| 客户端编程的通用风格是保持HTML内容和JavaScript行为分离，
+遵循这条规则的程序员应禁止（或至少避免）使用HTML事件处理程序属性，
+因为这些属性直接混合了JavaScript和HTML；
+
+| 注册事件处理程序： --p451
+- 给事件目标对象或文档元素设置属性（Window对象、HTML标签属性）；
+- 将事件处理程序传递给对象或元素的一个方法；（`addEventListenrer()`）
+
+| 移动设备事件： --p450
+- gesturestart
+- gestureend
+- gesturechange
+- 属性：scale、rotation
+- touchstart
+- touchend
+- touchmove
+- 属性：changedTouches
+- 旋转事件：orientationchanged事件
+
+
+| DOM事件、HTML5事件、触摸屏和移动设备事件。
+
+| 跨文档通信API允许一台服务器上的文档脚本能和另一台服务器上的文档脚本交换信息。
+其工作受限于同源策略这一安全方式。 --p449
+
+| textinput事件不是键盘特定事件，无论通过键盘、剪切和粘贴、拖放等方式，
+每当发生文本输入时就会触发它。--p448
+
+| 键盘事件 --p447
+- keyCode
+- keyDown
+- keyUp
+- keyPress
+- altKey
+- ctrlKey
+- metaKey
+- shiftKey
+
+| 鼠标事件 --p446
+- mousedown
+- mouseup
+- mouseover
+- mousewheel(鼠标滚轮)
+
+| Window事件 --p445
+- load
+- onload
+- onerror
+- abort
+- focus、blur
+- resize
+- scroll
+
+
+
+| 表单事件 --p444
+- submit
+- reset
+- change
+- focus
+- blur
+- input(键盘、剪切粘贴等文本操作会触发，另一个替代方案：textinput)
+
+## 第十七章：事件处理
+
+| CSS动画
+原理：使用`setTimeout()`和`setInterval()`重复调用函数来修改元素的内联样式达到目的。--p429
+
 | 开启和关闭样式表：--p436
 ```js
 document.styleSheets[0].disabled = true; // 关闭样式表
@@ -44,6 +135,20 @@ document.styleSheets[0].disabled = false; // 开启样式表
 | 静态定位`static`的元素不能使用top、left和类似其他属性定位。
 欲对文档元素使用CSS定位技术，必先将其position属性设置为除此之外的其他三个属性值：
 `absolute、fixed、relative`  --p417
+
+| 非标准属性 --p413
+在属性名前加一个厂商前缀。
+- Firefox使用`-moz-`
+- Chrome使用`-webkit-`
+- IE使用`-ms-`
+- 例如：
+```css
+.radius10 {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+```
 
 ## 第16章：脚本化CSS
 
