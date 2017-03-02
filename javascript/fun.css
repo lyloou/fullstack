@@ -4,29 +4,7 @@ body {
 }
 
 div {
-  text-indent: .5in;
   background-color: yellow;
   color: black;
   padding: 16px;
-  border-radius: 8px;
-  /*text-align: center;*/
-  border: solid red 2px;
-  /*position: fixed;*/
-  /*left: 20%; top: 20%;*/
-  /*right: 20%; bottom: 20%;*/
-  /*width: 50px;*/
-
-  text-shadow: 1px 1px 3px #800;
-
-  border-bottom: 3px dotted green ;
-  border-bottom-color: #5f8;
-  /*visibility: hidden;*/
-  /*display: block;*/
-  clip: rect(0px 100px 100px 0px);
-}
-
-.attention {
-  background-color: red;
-  font-weight: bold;
-  border: solid black 2px;
 }

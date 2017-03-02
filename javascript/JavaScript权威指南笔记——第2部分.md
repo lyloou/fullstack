@@ -1,4 +1,111 @@
 
+| XMLHttpRequest规范列出了这个令人困惑名字的不足之处： --p486
+对象名`XMLHttpRequest`是为了兼容Web，虽然这个名字的每个部分都可能造成误导。
+首先，这个对象支持包括XML在内的任何基于文本的格式。
+其次，它能用于http和https请求。
+最后，它所支持的请求是一个广义的概念，指的是对于定义的HTTP方法的设计HTTP请求或响应的所有活动。
+
+| 使用JSONP，JSON响应数据（理论上）是合法的JavaScript代码，当它到达时浏览器将执行它。--p506
+
+
+| 使用`<script>`元素进行Ajax传输的一个主要原因是，它不受同源策略的影响，
+因此可以使用他们从其他服务器请求数据。
+第二个原因是包含JSON编码数据的响应体会自动解码（即，执行）
+
+| 测试`withCredentials`的存在性是测试浏览器是否支持CORS的一种方法。--p504
+
+| 对于XMLHttpRequest对象x，设置x.progress以监控响应的下载进度，
+并且设置x.upload.onprogress以监控请求的上传进度；--p501
+
+| HTTP进度事件，Event对象属性
+- type
+- timestamp
+- loaded
+- total
+- lengthComputable
+```js
+request.onprogresss = function (e) {
+  if(e.lengthComputable) {
+    progress.innerHTML = Math.round(100*e.loaded/e.total) + "% Complete";
+  }
+}
+```
+
+| 测试浏览器是否支持progress事件：
+```js
+if("onprogress" in (new XMLHttpRequest())) {
+  // 支持progress事件
+}
+```
+
+| 对于任何具体的请求，浏览器将只会触发load、abort、timeout和error事件中的一个。--p500
+
+| HTTP请求无法完成有3种情况：
+- 请求超时，会触发`timeout`事件；
+- 请求中止，会触发`abort`事件；
+- 网络错误（例如：重定向），会触发`error`事件；
+
+| 如果上传的主体是XML文档或纯文本，那么可以不用显示设置HEAD；--p498
+
+| 表单数据编码格式有一个正式的MIME类型：
+```js
+application/x-www-form-urlencoded
+```
+
+| 对表单数据使用的编码方案：--p495
+对每个表单元素的名字和值执行普通的URL编码，使用等号把编码后的名字和值分开，
+并使用“&”符号分开名/值对。
+
+| 可以使用`setOverrideMimeType()`让`XMLHttpRequest`知道它不需要把文件解析成XML文档：
+--p494
+```js
+request.overrideMimeType("text/plain; charset=utf-8");
+```
+
+| 记住`<script>`元素能发起跨域HTTP请求，而XMLHttpRequest API则禁止。 --p494
+
+| XMLHttpRequest也支持同步响应。如果把false作为第三个参数传递给`open()`，
+那么`send()`方法将阻塞直到请求完成。 --p492
+
+| 用POST方法发送纯文本给服务器 --p490
+```js
+function postMessage(msg) {
+  var request = new XMLHttpRequest();
+  request.open("POST", "/log.php");
+  request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+  request.send(msg);
+}
+```
+
+| HTTP架构：请求/响应 --p488
+
+一个HTTP请求由4部分组成：
+- HTTP请求方法或“动作”（verb）
+- 正在请求的URL
+- 一个可选的请求主体
+
+服务器返回的HTTP响应包含3部分：
+- 一个数字和文字组成的状态码，用来显示请求的成功和失败
+- 一个响应头集合
+- 响应主体
+
+| 虽然它的名字叫`XMLHttpRequest API`，但并未限定只能使用XML文档，
+它能获取任何类型的文本类型。--p486
+
+| 一段时间以来，所有浏览器都支持XMLHttpRequest对象，他定义了用脚本操纵HTTP的API。
+除了常用的GET请求，这个API还包含实现POST请求的能力，
+同时它能用文本或Document对象的形式返回服务器的响应。 --p486
+
+
+| 在Ajax中，客户端从服务端“拉”数据，而在Comet中，服务端向客户端“推”数据。--p484
+
+| Web应用可以使用Ajax技术把用户的交互数据记录到服务器中，也可以开始只显示简单页面，
+之后按需加载额外的数据和页面组件来提升应用的启动时间。--p484
+
+| 术语Ajax描述了一种主要使用脚本操纵HTTP的Web应用架构。
+Ajax应用的主要特点是使用脚本操纵HTTP和Web服务器进行数据交换，不会导致页面重载。--p484
+
+## 第十八章：脚本化HTTP
 
 | 事件传播
 - 事件冒泡是事件传播的第三个“阶段”；
@@ -340,3 +447,25 @@ setTimeout("alert('Hello World!')", 3000);
 
 | p348
 > cookieEnable()  => cookieEnabled
+
+| p448
+> 然后当使用XMLHttpRequest进行Ajax编程时 => 然而当使用XMLHttpRequest进行Ajax编程时
+
+| p490
+> 例如，setRequestHeader()方法的调用必须在调用open()之前但在调用send()之后，否则它将抛出异常。
+=>
+  例如，setRequestHeader()方法的调用必须在调用open()之后但在调用send()之前，否则它将抛出异常。
+  （可以通过下面的代码例子确定这个错误）
+
+| p492
+> 如果这样，它会检查响应状态码来取保请求成功。
+  => 如果这样，它会检查响应状态码来确保请求成功。
+
+| p493
+> 但是还是其他方式来处理服务器的响应。
+ => 但是还有其他方式来处理服务器的响应。
+
+
+| p498
+> "ext/plain; charset=UTF-8"
+ => "text/plain; charset=UTF-8"

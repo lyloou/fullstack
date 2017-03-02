@@ -6,66 +6,37 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="fun.css" type="text/css">
 
-  <style>
-    p {
-      background-color: green;
-    }
-  </style>
-
   <script>
-    // window.onbeforeunload = function () {
-    //   console.log("==> onbeforeload");
-    //   return confirm("确认跳转？");
-    // }
+    var f1 = function () {
+      console.log(f2());
+    }
+
+    var f2 = function () {
+      return 'f2';
+    }
+
+    f1();
+
+    function clickFun (event) {
+        console.log(event);
+        alert("You Click Me?");
+    }
 
     window.onload = function () {
-      console.log("==> onload");
-
-      var helloBtn = document.getElementById("hello");
-
-
-      helloBtn.addEventListener("click", function(){
-        helloBtn.innerHTML = "是的，我很好3";
-      });
-
-      helloBtn.addEventListener("click", function(){
-        helloBtn.innerHTML = "是的，我很好2";
-      });
-      // setTimeout(function(){
-      //   helloBtn.innerHTML = "是的，我很好";
-      // }, 3000);
-    }
-
-
-    function helloworld () {
-      alert("Hello World!");
-    }
-
-    window.ononline = function () {
-      console.log("ononline");
-    }
-
-    window.onoffline = function () {
-      console.log("onoffline");
+      var fun = document.getElementById("fun");
+      console.log(fun);
+      fun.addEventListener("click", clickFun, false);
     }
   </script>
 </head>
 
 <body>
-  <div>Just For Fun ...</div>
+  <div id="fun">Just For Fun ...</div>
 
-  <p>
-    What fun ?
-  </p>
+    <!-- <img src="https://www.baidu.com/img/bd_logo1.png" width="100px" height="50px"> -->
 
-  <button id="hello" style="background-color:red; opacity:0.50; color:white; border: 0px" onclick="helloworld()">你好？</button>
+  <!-- <iframe src="https://baidu.com" width="600px" height="450px">
+  </iframe> -->
 
-  <a href="http://lyloou.com">
-    Lou
-  </a>
-
-  <textarea cols=60 rows=20 oninput="this.value = this.value.toUpperCase();">
-
-  </textarea>
 </body>
 </html>
