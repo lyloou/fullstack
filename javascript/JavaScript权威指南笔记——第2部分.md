@@ -1,4 +1,63 @@
 
+
+| jQuery事件处理程序
+需要知道的最重要的一件事情是，每个事件处理程序都传入一个jQuery事件对象作为第一个参数。--p533
+
+| 注意，在`replaceAll()`运行后，该jQuery对象中的元素将不再存在于文档中。--p528
+
+| 注意：传递对象给`data()`时，该对象的属性将替换掉与元素相关联的旧数据。
+  与很多其他setter方法不同，data()不接受函数参数。当将函数作为第二参数传递给data()时，
+  该函数会存储，就和其他值一样。--p527
+
+| jQuery只会把定位元素作为偏移父元素，
+jQuery对象的offsetParent()方法则会把每个元素映射到最近的定位祖先元素或`<body>`元素。--p526
+
+| css()方法允许在CSS样式名中使用连字符（"background-color"）
+或使用驼峰格式JavaScript样式名（"backgroundColor"） --p523
+
+| jQuery的setter和getter
+- `attr()`
+- `css()`
+- `val()`
+- `text()/html()`
+- `offset()`
+- `data()`
+
+| 查询
+- `$("div").each()`
+- `$("div").map()`
+- `$("div").index()`
+- `$("div").is()`
+
+| jQuery对象的三个有趣的属性 --p520
+- selector: 创建jQuery对象时的选择器字符串（如果有的话）；
+- context: 上下文对象，默认是document对象；
+- jquery: 通过判断该属性是否存在来与其他类数组对象区分开。（值是字符串形式的jQuery版本号）
+
+| $()的返回值是一个jQuery对象。jQuery对象是类数组：
+他们拥有length属性和介于0~length-1之间的数值属性。--p519
+
+| jQuery术语
+- jQuery对象：是由jQuery函数返回的对象。
+- jQuery函数：定义在jQuery命名空间中的函数。 --p519
+- jQuery方法：由jQuery函数返回的jQuery对象的方法。
+
+| jQuery工具函数（又称静态方法，命名空间函数）：
+- `jQuery.noConflict()`
+- `jQuery.each()`
+- `jQuery.parseJSON()`
+
+
+| jQuery调用方式 --p516
+- 传递css选择器给`$()`方法；
+- 传递一个Element、Document或Window对象给`$()`方法；
+- 传递HTML文本字符串给`$()`方法；
+- 传入一个函数给`$()`方法；
+
+| `jQuery()`是工厂函数，不是构造函数，它返回一个新创建的对象，但并没有和new关键字一起使用。
+
+## 第十九章：jQuery类库
+
 | XMLHttpRequest规范列出了这个令人困惑名字的不足之处： --p486
 对象名`XMLHttpRequest`是为了兼容Web，虽然这个名字的每个部分都可能造成误导。
 首先，这个对象支持包括XML在内的任何基于文本的格式。

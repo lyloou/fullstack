@@ -6,37 +6,62 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="fun.css" type="text/css">
 
+  <script src="http://code.jquery.com/jquery-1.4.2.min.js">
+  </script>
+
   <script>
-    var f1 = function () {
-      console.log(f2());
+    window.onload = function (e) {
+
+      $(function (){
+        console.log("Whatever happends, happends for good!");
+      });
+      // 选取元素
+      var vBefore = document.getElementById("fun");
+
+      // 封装成jQuery对象
+      var v = $(vBefore);
+
+      // 更改背景色
+      v.css("background-color", "green");
+
+      // 点我折叠
+      // v.click(function() {
+      //   $(this).slideUp("slow");
+      // });
+
+      $.each([3, 2, 1, 4, 3, 2, 1], function(x, y){
+        console.log(x+" "+ y);
+      })
+
+      var input2 = $("<input/>", {
+        type:"text",
+        value:"input content222",
+        click: function (e){
+          console.log($(this).val());
+
+          $(".hello88").css("background-color", "green");
+          console.log(e);
+        },
+        className: "hello88"
+      });
+
+      $("#fun").append(input2);;
+
     }
 
-    var f2 = function () {
-      return 'f2';
-    }
-
-    f1();
-
-    function clickFun (event) {
-        console.log(event);
-        alert("You Click Me?");
-    }
-
-    window.onload = function () {
-      var fun = document.getElementById("fun");
-      console.log(fun);
-      fun.addEventListener("click", clickFun, false);
-    }
+    setTimeout(function(){
+      $(".hello88").css("background-color", "yellow");
+    }, 3000);
   </script>
 </head>
 
 <body>
   <div id="fun">Just For Fun ...</div>
 
-    <!-- <img src="https://www.baidu.com/img/bd_logo1.png" width="100px" height="50px"> -->
+  <!-- <input type="text" value="input content">
+  </input> -->
 
-  <!-- <iframe src="https://baidu.com" width="600px" height="450px">
-  </iframe> -->
-
+  <input type="text" value="input content" class="hello88">
+  </input>
 </body>
 </html>
