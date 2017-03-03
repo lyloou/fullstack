@@ -1,5 +1,16 @@
 
 
+| jQuery另一种事件处理程序的方法：`one()`，工作原理同`bind()`一样，
+除此之外，使用`one()`注册的事件处理器永远只会触发一次。--p536
+
+| 调用`$('a').hover(f)`等同于调用`$('a').bind('mouseenter mouseleave', f)` --p536
+
+| 可以通过直接使用`bind()`方法来使用事件注册的高级特性。 --p535
+- 最简形式：`$('p').bind('click', f)`
+- 三个参数：中间一个参数作为Event的data属性。（方便进行数据交互）
+- 为多个时间类型同时注册程序处理函数。（用空格分开：`$('a').bind('mouseenter mouseleave', f)`）
+- 第一个参数可以是对象。`$('a').bind({mouseenter:f, mouseleave:g})`
+
 | jQuery事件处理程序
 需要知道的最重要的一件事情是，每个事件处理程序都传入一个jQuery事件对象作为第一个参数。--p533
 
