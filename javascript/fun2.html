@@ -10,58 +10,26 @@
   </script>
 
   <script>
-    window.onload = function (e) {
+  $(function(){
+    $("#fun").fadeIn("slow", function(){
+      var originText = $(this).text();
+      $(this).text("Hello World!");
 
-      $(function (){
-        console.log("Whatever happends, happends for good!");
+      $("#fun").click(function () {
+
+        $(this).animate({"width":"-=100"}, 500, "linear");
+        // $(this).animate({"width":"-=100"}, {duration:500, easing:"linear"});
+
+        $(this).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(400, function(){
+          $(this).text(originText);
+        });
       });
-      // 选取元素
-      var vBefore = document.getElementById("fun");
-
-      // 封装成jQuery对象
-      var v = $(vBefore);
-
-      // 更改背景色
-      v.css("background-color", "green");
-
-      // 点我折叠
-      // v.click(function() {
-      //   $(this).slideUp("slow");
-      // });
-
-      $.each([3, 2, 1, 4, 3, 2, 1], function(x, y){
-        console.log(x+" "+ y);
-      })
-
-      var input2 = $("<input/>", {
-        type:"text",
-        value:"input content222",
-        click: function (e){
-          console.log($(this).val());
-
-          $(".hello88").css("background-color", "green");
-          console.log(e);
-        },
-        className: "hello88"
-      });
-
-      $("#fun").append(input2);;
-
-    }
-
-    setTimeout(function(){
-      $(".hello88").css("background-color", "yellow");
-    }, 3000);
+    });
+  });
   </script>
 </head>
 
 <body>
-  <div id="fun">Just For Fun ...</div>
-
-  <!-- <input type="text" value="input content">
-  </input> -->
-
-  <input type="text" value="input content" class="hello88">
-  </input>
+  <div id="fun" style="background-color:red; color:green">Just For Fun ...</div>
 </body>
 </html>

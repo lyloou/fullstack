@@ -7,4 +7,5 @@ div {
   background-color: yellow;
   color: black;
   padding: 16px;
+  display: none;
 }

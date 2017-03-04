@@ -1,5 +1,24 @@
 
 
+| 缓动函数，默认的缓动函数有“swing”，还有线性缓动函数"linear"。
+还可以自定义缓动函数：`jQuery.easing['squareroot'] = Math.sqrt` --p547
+
+
+| 动画选项：
+- 默认情况下，所有动画都是队列化的。（将`queue`属性设置为false可以取消队列化） --p546
+
+| 动画只支持数值属性：对于颜色，字体或display等枚举属性是无法实现动画效果的。
+（jQuery其他实现方案：传入自定义的CSS属性变化函数） --p545
+
+| jQuery禁用动画：
+```js
+jQuery.fx.off = true;
+```
+
+| 实时事件依赖于事件冒泡。--p541
+
+| `unbind()`只注销用`bind()`和相关jQuery方法注册的事件处理程序。--p536
+
 | jQuery另一种事件处理程序的方法：`one()`，工作原理同`bind()`一样，
 除此之外，使用`one()`注册的事件处理器永远只会触发一次。--p536
 
@@ -9,6 +28,7 @@
 - 最简形式：`$('p').bind('click', f)`
 - 三个参数：中间一个参数作为Event的data属性。（方便进行数据交互）
 - 为多个时间类型同时注册程序处理函数。（用空格分开：`$('a').bind('mouseenter mouseleave', f)`）
+- 允许为注册的事件处理程序指定命名空间。f
 - 第一个参数可以是对象。`$('a').bind({mouseenter:f, mouseleave:g})`
 
 | jQuery事件处理程序
@@ -539,3 +559,11 @@ setTimeout("alert('Hello World!')", 3000);
 | p498
 > "ext/plain; charset=UTF-8"
  => "text/plain; charset=UTF-8"
+
+| p548
+> `top()`方法接受两个可选的布尔值。
+  => `stop()`方法接受两个可选的布尔值。
+
+| p549
+> 可以使用queque()方法；
+ => 可以使用queue()方法;
