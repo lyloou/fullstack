@@ -1,5 +1,65 @@
 
 
+| 可以通过给`jQuery.expr[':']`对象添加属性来添加新的伪类过滤器（比如 :first 和 :input）。
+
+| `jQuery.fn`是所有jQuery对象的原型对象。如果给该对象添加一个函数，该函数会成为一个jQuery方法。
+--p574
+
+|jQuery插件是普通的JavaScript代码文件，在网页中使用时，只需要用`<script>`元素引入就好，
+就和引用任何其他JavaScript类库一样。（注意：必须在jQuery之后引入插件） --p574
+
+| 再过滤： --p572
+- find();
+- children();
+- contains();
+- prev();
+- next();
+- prevAll();
+- nextAll();
+- prevUtil();
+- nextUtil();
+- parent();
+- parents();
+- parentsUtil();
+- closest();
+
+| 选取方法： --p570
+* 提取一个元素
+  - first()
+  - last()
+  - eq()
+* 提取多个
+  - slice(x, y)，左闭右开，包含x，不包含y；用法同`Array.slice()`；
+  - filter()，一个通用的选取过滤器方法，它会返回一个jQuery对象；
+  - not();与`filter()`方法相反；
+  - has();
+* 扩充选区
+  - add();  
+
+| 注意组合选择器并不限于组合两个选择器：组合三个甚至更多选择器也是允许的。
+组合选择器从左到右处理。--p570
+
+| 通常来说，指定标签类型的前缀，可以让过滤器的运行更高效。例如：`input:radio`。
+ID过滤器是个例外，不添加前缀时它会更高效。例如，选择器`#address`通常比更明确的
+“form#address”更高效。--p569
+
+| 注意`:nth-child(n)`的过滤器的序号是从1开始的。区别于`:even`和`:odd`，
+后者是从0开始的。 --p568
+
+| 如果选取的元素和标签名无关，那么可以使用通配符`*`号来代替。--p566
+
+| 设置global为false可以让jQuery不再在context对象上触发事件以及不再全局触发事件。--p562
+
+| ajaxStart和ajaxStop是一对表示与Ajax相关的网络活动开始和停止的事件。
+ 他们没有相应的回调函数，同时他们在触发时不带额外的参数。 --p562
+
+| `jQuery.getScript()`，对于跨源请求，不存在`XMLHttpRequest`对象，
+并且脚本的内容获取不到。在这种情况下，回调函数的第一个和第三个参数是undefined，
+`jQuery.getScript()`的返回值也是undefined。--p552
+
+| 通常情况下，`load()`方法发送HTTP GET请求，但是如果传入数据对象，则它会发送POST请求。--p550
+
+
 | 缓动函数，默认的缓动函数有“swing”，还有线性缓动函数"linear"。
 还可以自定义缓动函数：`jQuery.easing['squareroot'] = Math.sqrt` --p547
 

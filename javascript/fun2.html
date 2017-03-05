@@ -10,26 +10,49 @@
   </script>
 
   <script>
-  $(function(){
-    $("#fun").fadeIn("slow", function(){
-      var originText = $(this).text();
-      $(this).text("Hello World!");
+    $(function(){
+      //
+      // function f1 () {
+      //   console.log("laie:"+this + ":Hello");
+      // }
+      // var o = {};
+      // console.log(o);
+      // var f2 = jQuery.proxy(f1, o);
+      //
+      // console.log(f2());
+      // console.log(o);
 
-      $("#fun").click(function () {
+      // $("#fun").load("fun1.html");
+      // $("#fun").load("https://www.baidu.com");
+      // jQuery.getScript("http://apis.baidu.com/apistore/iplookup/iplookup_paid?ip=117.89.35.58", function(x, y, z){
+      //   console.log("x：" + x);
+      //   console.log("y：" + y);
+      //   console.log("z：" + z);
+      // });
 
-        $(this).animate({"width":"-=100"}, 500, "linear");
-        // $(this).animate({"width":"-=100"}, {duration:500, easing:"linear"});
-
-        $(this).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(400, function(){
-          $(this).text(originText);
-        });
-      });
     });
-  });
   </script>
 </head>
 
 <body>
-  <div id="fun" style="background-color:red; color:green">Just For Fun ...</div>
+  <div id="fun">Just For Fun ...</div>
+
+  <a href="http://lyloou.com">
+    Lou Lou
+  </a>
+
+  <form id="myForm" method="GET">
+
+    <input type="text" name="password" value="please input your password?"/>
+    <input type="submit" value="去提交吧">
+  </form>
+
+  <p id="p1">
+    Hello
+  </p>
+
+  <p id="p1">
+    你好
+  </p>
 </body>
 </html>
