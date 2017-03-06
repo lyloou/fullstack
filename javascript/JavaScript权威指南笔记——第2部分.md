@@ -1,5 +1,139 @@
 
 
+
+| Web应用是无法拥有整个硬盘的root权限的，或者说无法访问任意的文件。--p692
+
+| 拖拽显示缩略图
+```js
+var getBlobURL = (window.URL && URL.createObjectURL.bind(URL)) ||
+    (window.webkitURL && webkitURL.createObjectURL.bind(webkitURL)) ||
+    (window.createObjectURL);
+
+function fileinfo(files){
+
+  for(var i=0; i<files.length; i++) {
+    var f = files[i];
+    console.log(f.name, f.size, f.type, f.lastModifiedDate);
+    var img = document.createElement("img");
+    img.src = getBlobURL(f);
+    img.onload = function () {
+      this.width = 100;
+      document.body.appendChild(this);
+    }
+  }
+}
+```
+
+```html
+<form id="f1">
+  <!-- 拖拽多个文件到该区域，或者点击选择多个文件 -->
+  <input type="file" accept="image/*" multiple onchange="fileinfo(this.files)"/>
+</form>
+```
+
+
+| 下载Block --p686
+```js
+function getBlock() {
+    var url = "http://maps.google.com/maps/api/staticmap?center=104.195397,35.86166&size=1280x1280&sensor=true&zoom=1.4";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.responseType = "blob";
+    xhr.onload = function (e) {
+      console.log(xhr.response);
+    }
+
+    xhr.send(null);
+}
+```
+
+| 本地文件列表 --p685
+```js
+function fileinfo(files){
+  for(var i=0; i<files.length; i++) {
+    var f = files[i];
+    console.log(f.name, f.size, f.type, f.lastModifiedDate);
+  }
+}
+```
+
+```html
+<form id="f1">
+  <!-- 拖拽多个文件到该区域，或者点击选择多个文件 -->
+  <input type="file" accept="image/*" multiple onchange="fileinfo(this.files)"/>
+</form>
+```
+
+| File对象其实就是有名字和修改日期的Blob数据。--p684
+
+| 在JavaScript中，Blob通常表示二进制数据，不过他们不一定非得是大量数据：Blob也可以
+表示一个小型文本文件内容。--p682
+
+| 类型化数组例子； --p680
+```js
+var bytes = new Uint8Array(1024);
+var pattern = new Uint8Array([0, 1, 2, 3]);
+
+bytes.set(pattern);
+console.log(bytes);
+
+bytes.set(pattern, 4);
+console.log(bytes);
+
+bytes.set([1, 2, 3, 4], 8);
+console.log(bytes);
+```
+
+| 类型化数组在执行时间和内存使用上都要更加高效。（相对于普通的数组）
+
+| 类型化数组和常规的数组区别： --p679
+- 类型化数组中的元素都是数字；
+- 类型化数组有固定的长度；
+- 在创建类型化数组的时候，数组中的元素总是默认初始化为0；
+
+
+| Worker例子：
+```js
+// 在浏览器的console中输入
+var w = new Worker("printData.js"); // 注意：chrome浏览器不支持file；http://stackoverflow.com/questions/21408510/chrome-cant-load-web-worker
+w.postMessage("我是消息");
+w.onmessage = function (e) {
+  console.log(e.data);
+}
+
+// 在printData.js文件中输入
+onmessage = function (e) {
+  console.log(e.data);
+  postMessage("已经成功打印！");
+}
+```
+
+| 这就是线程之美：
+**可以在一个Worker中使用阻塞式函数，而不会导致主线程中的事件循环，
+也不会阻塞在其他Worker中并行执行的计算。** --p674
+
+| 通过`imoprtScripts()`方法载入的脚本自身还可以调用`importScripts()`方法载入它需要的文件。
+但是，要注意的是，`importScripts()`方法不会视图去跟踪哪些脚本已经载入了， 也不会去防止循环依赖的问题。
+--p674
+
+| 如果在一个已经关闭的（`close()`）的Worker上调用`postMessage`方法，那么消息
+会被无声无息地丢弃，而且也不会有任何错误抛出。 --p673
+
+| 之所以设计成单线程的理论就是，客户端的JavaScript函数必须不能运行太长时间：
+否则会导致循环事件，Web浏览器无法对用户输入做出响应。 --p671
+
+| postMessage --p668
+- 第一个参数：要传递的消息；
+- 第二个参数：一个字符串，指定目标窗口的源；
+
+| 跨文档消息传递：`postMessage()`方法，
+该方法允许有限的通信——通过异步消息传递的方式——在来自不同源的脚本之间。 --p668
+
+| 监听window的hashchange事件，可以检测到`location.hash`的变化。
+`window.onhashchange=function(e){}` --p663
+
+## 第22章：HTML5 API
+
 | 可以通过给`jQuery.expr[':']`对象添加属性来添加新的伪类过滤器（比如 :first 和 :input）。
 
 | `jQuery.fn`是所有jQuery对象的原型对象。如果给该对象添加一个函数，该函数会成为一个jQuery方法。
@@ -138,6 +272,12 @@ jQuery对象的offsetParent()方法则会把每个元素映射到最近的定位
 - `jQuery.each()`
 - `jQuery.parseJSON()`
 
+```js
+var v = document.getElementById("outter");
+var v2 = document.getElementById("inner");
+var r = $.contains(v, v2); // 比较两个文档对象是否属于包含关系；
+console.log(r);
+```
 
 | jQuery调用方式 --p516
 - 传递css选择器给`$()`方法；
@@ -147,6 +287,11 @@ jQuery对象的offsetParent()方法则会把每个元素映射到最近的定位
 
 | `jQuery()`是工厂函数，不是构造函数，它返回一个新创建的对象，但并没有和new关键字一起使用。
 
+| 引入jQuery: --p516
+```js
+<script src="http://code.jquery.com/jquery-1.4.2.min.js">
+</script>
+```
 ## 第十九章：jQuery类库
 
 | XMLHttpRequest规范列出了这个令人困惑名字的不足之处： --p486
@@ -627,3 +772,7 @@ setTimeout("alert('Hello World!')", 3000);
 | p549
 > 可以使用queque()方法；
  => 可以使用queue()方法;
+
+| p682
+> var view = DataView(data);
+ => var view = new DataView(data);

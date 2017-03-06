@@ -10,49 +10,37 @@
   </script>
 
   <script>
-    $(function(){
-      //
-      // function f1 () {
-      //   console.log("laie:"+this + ":Hello");
-      // }
-      // var o = {};
-      // console.log(o);
-      // var f2 = jQuery.proxy(f1, o);
-      //
-      // console.log(f2());
-      // console.log(o);
 
-      // $("#fun").load("fun1.html");
-      // $("#fun").load("https://www.baidu.com");
-      // jQuery.getScript("http://apis.baidu.com/apistore/iplookup/iplookup_paid?ip=117.89.35.58", function(x, y, z){
-      //   console.log("x：" + x);
-      //   console.log("y：" + y);
-      //   console.log("z：" + z);
-      // });
+  var getBlobURL = (window.URL && URL.createObjectURL.bind(URL)) ||
+  (window.webkitURL && webkitURL.createObjectURL.bind(webkitURL)) ||
+  window.createObjectURL;
 
-    });
+
+  function fileinfo(files){
+
+    for(var i=0; i<files.length; i++) {
+      var f = files[i];
+      console.log(f.name, f.size, f.type, f.lastModifiedDate);
+      var img = document.createElement("img");
+      img.src = getBlobURL(f);
+      img.onload = function () {
+        this.width = 100;
+        document.body.appendChild(this);
+      }
+    }
+  }
   </script>
 </head>
 
 <body>
   <div id="fun">Just For Fun ...</div>
 
-  <a href="http://lyloou.com">
-    Lou Lou
-  </a>
+    <form id="f1">
+      <!-- 拖拽多个文件到该区域，或者点击选择多个文件 -->
+      <input type="file" accept="image/*" multiple onchange="fileinfo(this.files)"/>
 
-  <form id="myForm" method="GET">
+      <br />
+    </form>
 
-    <input type="text" name="password" value="please input your password?"/>
-    <input type="submit" value="去提交吧">
-  </form>
-
-  <p id="p1">
-    Hello
-  </p>
-
-  <p id="p1">
-    你好
-  </p>
 </body>
 </html>
