@@ -1,9 +1,13 @@
+# 《JavaScript权威指南》笔记——第2部分
 
+-----------------------
+
+------<end>------
 
 
 | Web应用是无法拥有整个硬盘的root权限的，或者说无法访问任意的文件。--p692
 
-| 拖拽显示缩略图
+| 拖拽显示缩略图 --p687
 ```js
 var getBlobURL = (window.URL && URL.createObjectURL.bind(URL)) ||
     (window.webkitURL && webkitURL.createObjectURL.bind(webkitURL)) ||
@@ -95,7 +99,7 @@ console.log(bytes);
 | Worker例子：
 ```js
 // 在浏览器的console中输入
-var w = new Worker("printData.js"); // 注意：chrome浏览器不支持file；http://stackoverflow.com/questions/21408510/chrome-cant-load-web-worker
+var w = new Worker("printData.js"); // 注意：chrome浏览器不支持file（可以尝试使用Firefox）；http://stackoverflow.com/questions/21408510/chrome-cant-load-web-worker
 w.postMessage("我是消息");
 w.onmessage = function (e) {
   console.log(e.data);
@@ -113,7 +117,7 @@ onmessage = function (e) {
 也不会阻塞在其他Worker中并行执行的计算。** --p674
 
 | 通过`imoprtScripts()`方法载入的脚本自身还可以调用`importScripts()`方法载入它需要的文件。
-但是，要注意的是，`importScripts()`方法不会视图去跟踪哪些脚本已经载入了， 也不会去防止循环依赖的问题。
+但是，要注意的是，`importScripts()`方法不会试图去跟踪哪些脚本已经载入了， 也不会去防止循环依赖的问题。
 --p674
 
 | 如果在一个已经关闭的（`close()`）的Worker上调用`postMessage`方法，那么消息
@@ -231,7 +235,8 @@ jQuery.fx.off = true;
 | 注意，在`replaceAll()`运行后，该jQuery对象中的元素将不再存在于文档中。--p528
 
 | 注意：传递对象给`data()`时，该对象的属性将替换掉与元素相关联的旧数据。
-  与很多其他setter方法不同，data()不接受函数参数。当将函数作为第二参数传递给data()时，
+  与很多其他setter方法不同，data()不接受函数参数。
+  当将函数作为第二参数传递给data()时，
   该函数会存储，就和其他值一样。--p527
 
 | jQuery只会把定位元素作为偏移父元素，
@@ -292,6 +297,7 @@ console.log(r);
 <script src="http://code.jquery.com/jquery-1.4.2.min.js">
 </script>
 ```
+
 ## 第十九章：jQuery类库
 
 | XMLHttpRequest规范列出了这个令人困惑名字的不足之处： --p486
@@ -302,12 +308,14 @@ console.log(r);
 
 | 使用JSONP，JSON响应数据（理论上）是合法的JavaScript代码，当它到达时浏览器将执行它。--p506
 
+| 这种使用`<script>`元素作为Ajax传输的技术称为JSONP，若HTTP请求所得到的响应数据是经过JSON编码的，
+则适合使用该技术。
 
 | 使用`<script>`元素进行Ajax传输的一个主要原因是，它不受同源策略的影响，
 因此可以使用他们从其他服务器请求数据。
 第二个原因是包含JSON编码数据的响应体会自动解码（即，执行）
 
-| 测试`withCredentials`的存在性是测试浏览器是否支持CORS的一种方法。--p504
+| 测试`withCredentials`的存在性是测试浏览器是否支持CORS（跨域资源共享）的一种方法。--p504
 
 | 对于XMLHttpRequest对象x，设置x.progress以监控响应的下载进度，
 并且设置x.upload.onprogress以监控请求的上传进度；--p501
@@ -395,7 +403,7 @@ function postMessage(msg) {
 | 在Ajax中，客户端从服务端“拉”数据，而在Comet中，服务端向客户端“推”数据。--p484
 
 | Web应用可以使用Ajax技术把用户的交互数据记录到服务器中，也可以开始只显示简单页面，
-之后按需加载额外的数据和页面组件来提升应用的启动时间。--p484
+之后按需加载额外的数据和页面组件来提升应用的启动时间。（异步的灵活性）--p484
 
 | 术语Ajax描述了一种主要使用脚本操纵HTTP的Web应用架构。
 Ajax应用的主要特点是使用脚本操纵HTTP和Web服务器进行数据交换，不会导致页面重载。--p484
@@ -422,7 +430,7 @@ window.onbeforeunload = function () {
 使用相同的参数在同一个对象上多次调用addEventListener()是没用的，处理程序仍然只注册一次，
 同时重复调用也不会改变调用处理程序的顺序。 --p453
 
-| 按照约定，事件处理程序属性的名字由“on”后面跟着事件名组成：nclick、onchange、onload、
+| 按照约定，事件处理程序属性的名字由“on”后面跟着事件名组成：onclick、onchange、onload、
 onmouseover等。注意这些属性名是区分大小写的，所有都是小写，即使事件类型是由多个词组成。--p451
 
 | 客户端编程的通用风格是保持HTML内容和JavaScript行为分离，
@@ -430,7 +438,7 @@ onmouseover等。注意这些属性名是区分大小写的，所有都是小写
 因为这些属性直接混合了JavaScript和HTML；
 
 | 注册事件处理程序： --p451
-- 给事件目标对象或文档元素设置属性（Window对象、HTML标签属性）；
+- 给事件目标对象或文档元素设置属性（Window对象、HTML标签属性Element）；
 - 将事件处理程序传递给对象或元素的一个方法；（`addEventListenrer()`）
 
 | 移动设备事件： --p450
@@ -450,7 +458,7 @@ onmouseover等。注意这些属性名是区分大小写的，所有都是小写
 | 跨文档通信API允许一台服务器上的文档脚本能和另一台服务器上的文档脚本交换信息。
 其工作受限于同源策略这一安全方式。 --p449
 
-| textinput事件不是键盘特定事件，无论通过键盘、剪切和粘贴、拖放等方式，
+| textinput事件不只是键盘特定事件，无论通过键盘、剪切和粘贴、拖放等方式，
 每当发生文本输入时就会触发它。--p448
 
 | 键盘事件 --p447
@@ -491,7 +499,7 @@ onmouseover等。注意这些属性名是区分大小写的，所有都是小写
 ## 第十七章：事件处理
 
 | CSS动画
-原理：使用`setTimeout()`和`setInterval()`重复调用函数来修改元素的内联样式达到目的。--p429
+原理：使用`setTimeout()`和`setInterval()`不断地重复调用函数来达到修改元素的内联样式达到目的，从而产生动画。--p429
 
 | 开启和关闭样式表：--p436
 ```js
@@ -507,6 +515,11 @@ document.styleSheets[0].disabled = false; // 开启样式表
 每个颜色最低位为0（16进制为00），最高位为255（16进制为FF）
 16进制值的写法为#号后面跟三个或六个十六进制字符。
 三位数表示法：`#RGB`，转换为6位数表示法：`#RRGGBB`
+
+```js
+#864 相当于 #886644
+```
+
 - [HTML 颜色值\_w3cschool](http://www.w3cschool.cn/html/html-colorvalues.html)
 
 | visibility和display的区别：
@@ -524,8 +537,7 @@ document.styleSheets[0].disabled = false; // 开启样式表
 | 第三个维度：`z-index`
 当两个或多个元素重叠在一起的时候，他们是按照从低到高的`z-index`顺序绘制的。
 如果值一样，那么按照在文档中出现的顺序绘制，即最后一个重叠的元素显示在最上面。--p418
-注意：
-`z-index`只对兄弟元素应用堆叠效果。
+注意：`z-index`只对兄弟元素应用堆叠效果。
 
 | 可以通过指定`width`和`height`属性来设置元素的宽度和高度。另外可以通过设置
 `left`、`right`、`top`、`bottom`来指定，
@@ -568,7 +580,7 @@ document.styleSheets[0].disabled = false; // 开启样式表
 | 表单元素在收到键盘的焦点时会触发focus事件，失去焦点时会触发blur事件。 --p400
 
 | onsubmit事件处理程序只能通过单击“提交”按钮来触发。直接调用表单的submit()方法不触发onsubmit事件处理程序。
-  onreset事件处理程序只能通过单击“提交”按钮来触发。直接调用表单的reset()方法不触发onreset事件处理程序。 --p400
+  onreset事件处理程序只能通过单击“重置”按钮来触发。直接调用表单的reset()方法不触发onreset事件处理程序。 --p400
 
 | HTML表单
 在服务器程序中，表单必须有一个“提交”按钮，否则它就没有用处。
@@ -584,7 +596,7 @@ clearInterval(result);
 ```
 
 | 如果调用`appendChild()`或`insertBefore()`将已存在文档中的一个节点再次插入，
-那个节点将自动从当前的位置删除并在新的位置重新插入：没有必要显示删除该节点。
+那个节点将自动从当前的位置删除并在新的位置重新插入：没有必要显示地删除该节点。
 （也就是说可以通过这两个方法重新排列节点） --p383
 
 | 对于没有指定`src`属性的`script`标签，是一个嵌入任意文本内容的理想地方。 --p380
@@ -602,9 +614,9 @@ console.log(ss.text);
 | 对innnerHTML属性用`+=`操作符重复追加一小段文本通常效率低下，因为它既要序列化又要解析。 --p379
 
 | 元素的内容
-- 使用HTML表示: `innerHTML()`
-- 纯文本表示: `innerText()/textContent()`，注意两者的支持情况 --p380
-- 树状表示；`nodeValue()`、`nodeType`
+- 使用HTML表示: `innerHTML`
+- 纯文本表示: `innerText/textContent`，注意两者的支持情况 --p380
+- 树状表示；`nodeValue`、`nodeType`
 
 | nodeType  --p372
 - 1 代表Element节点
@@ -622,11 +634,13 @@ console.log(ss.text);
   （中间用逗号`,`分割）
 
 | 通过`open()` 的返回值，来获取通过脚本打开的新窗口的window对象。 --p355
-  在新窗口window对象里，通过`window.opener`可以拿到来源窗口的window对象。
+
+在新窗口window对象里，通过`window.opener`可以拿到来源窗口的window对象。
 ```js
 var w = window.open("http://url1.com");
 w.location = "http://url2.com"; // 通过w来修改新窗口的url
 ```
+
 在新窗口中，可以通过`opener`来操作打开它的脚本的Window对象。
 ```js
 var w2 = window.opener;
@@ -689,7 +703,7 @@ setTimeout("alert('Hello World!')", 3000);
 
 | 脚本本身的来源和同源策略并不相关，相关的是脚本所嵌入的文档的来源（脚本所依赖的宿主环境）。
 
-| 针对安全性问题，JavaScript对一些能力和和已有功能做了限制： --p335
+| 针对安全性问题，JavaScript对一些能力和已有功能做了限制： --p335
 - 不支持一些功能（没有权限操作计算机上的文件和目录）。
 - 没有通用的网络能力。
 - 限制打开窗口的能力：只是为了响应鼠标单击这样的用户触发事件才使用。
@@ -705,13 +719,13 @@ setTimeout("alert('Hello World!')", 3000);
 > 当document文档正在加载时,返回"loading"。当文档结束渲染但在加载内嵌资源时，返回"interactive"，并引发DOMContentLoaded事件。当文档加载完成时,返回"complete"，并引发load事件。
 
 | JavaScript线程模型：单线程执行的机制（让编程变得简单）。--p324
-在H5中，通过WebWorker实现了并发的控制方式（可以计算密集任务而不冻结用户界面的后台线程--p325）。
+  在H5中，通过WebWorker实现了并发的控制方式（可以计算密集任务而不冻结用户界面的后台线程--p325）。
 
 | 事件驱动阶段里发生的第一个事件是load事件，指示文档已经完全载入，并可以操作。--p320
 
 | JavaScript的执行包括两个阶段： --p320
-1. 载入文档——按照在文档中出现的顺序执行。
-2. 事件驱动——
+1. 载入文档内容阶段——按照在文档中出现的顺序执行。
+2. 事件驱动阶段——
   - 用户输入（鼠标点击或经过、键盘按下）
   - 网络活动
   - 运行时间
@@ -731,9 +745,10 @@ setTimeout("alert('Hello World!')", 3000);
 
 | Window对象处于作用域链的顶部，它的属性和方法实际上是全局变量和全局函数。--p310
 
-## 第十三章Web浏览器中的JavaScript
+## 第十三章：Web浏览器中的JavaScript
 
-
+--------
+------<start>------
 
 ## 书中的错误
 
