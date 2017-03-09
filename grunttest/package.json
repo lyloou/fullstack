@@ -1,0 +1,27 @@
+{
+  "name": "grunttest",
+  "version": "1.0.0",
+  "description": "grunttest_desc",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunttest_test_command"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyloou/lou.git"
+  },
+  "keywords": [
+    "lou"
+  ],
+  "author": "lou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lyloou/lou/issues"
+  },
+  "homepage": "https://github.com/lyloou/lou#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "latest"
+  }
+}
