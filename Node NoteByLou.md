@@ -1,3 +1,11 @@
+
+
+| npm install
+> If you have a package.json file in your directory and you run npm install,
+then npm will look at the dependencies that are listed in that file and
+download the latest versions satisfying semver rules for all of those.
+https://docs.npmjs.com/getting-started/using-a-package.json
+
 | package.json：The difference between devDependencies and dependencies
 > If someone is planning on downloading and using your module in their program,
  then they probably don't want or need to download and build the external test
