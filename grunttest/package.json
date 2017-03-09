@@ -25,6 +25,7 @@
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-contrib-concat": "latest",
-    "grunt-contrib-qunit": "latest"
+    "grunt-contrib-qunit": "latest",
+    "matchdep": "latest"
   }
 }
