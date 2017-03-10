@@ -1,4 +1,18 @@
 
+
+|  类型转换
+```js
+var tmp = -{};
+console.log(tmp);  // => NaN
+
+tmp = -[3];
+console.log(tmp);  // => -3
+
+tmp = -[2, 3];
+console.log(tmp);  // => NaN
+```
+
+
 1.
 ```js
 console.log("Hello World!");

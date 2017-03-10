@@ -1,4 +1,138 @@
+| How do I uninstall or remove unwanted plugins?
+- `npm uninstall [GRUNT_PLUGIN] --save-dev`, this will remove the plugin from
+  your `package.json` and from `node_module`
+- delete the dependencies in `package.json`	mannually and run `npm prune`
 
+| 异步任务,需要在task body中调用`this.async()`来开启。
+`var done = this.async()`
+Note that passing `false` to the `done()` function tells Grunt that the task has
+failed.
+
+| 获取configuration中的属性值
+`grunt.config('meta.name')`
+or
+`grunt.config(['meta', 'name'])`
+
+| 验证configuration中是否存在property:
+`grunt.config.requires('meta.name')`
+or
+`grunt.config.requires(['meta', 'name'])`
+
+| Tasks can be dependent on the successful execution of other tasks.
+`grunt.task.requires('foo')`
+
+| Inside a task, you can run other tasks.
+`grunt.task.run('bar', 'baz')`
+or
+`grunt.task.run(['bar', 'baz'])`
+
+| 一旦一个任务返回了false，就会abort了。通过添加参数`--force`来强制向后继续执行。
+
+| 执行多个任务用空格分开：
+`grunt foo bar` 和下面的代码一样
+```js
+grunt foo
+grunt bar
+```
+- https://gruntjs.com/creating-tasks
+
+| Creating Tasks
+- Alias Task;
+```js
+grunt.registerTask(taskName, [description, ], taskList);
+// eg.
+grunt.registerTask("default", ['jshint', 'qunit', 'concat:dist', 'uglify:dist']);
+```
+- Multi Task;
+When a multi task is run, Grunt looks for a property of the same in the Grunt Configuration.
+```js
+grunt.registerMultiTask(taskName, [description, ], taskFunction);
+
+// eg.
+grunt.registerMultiTask('log', 'log stuff.', function(){
+	grunt.log.write(this.target + ":" + this.data);
+});
+```
+
+- Basic Task;
+When a basic task is run, Grunt doesn't looks at the configuration and environment.
+通过冒号来传递参数:例如针对下面的声明，通过`grunt log:ARG1:ARG2`来调用。
+```js
+grunt.registerTask(taskName, [description, ], taskFunction);
+
+// eg.
+grunt.registerTask('foo', 'A sample task that logs stuff.', function(arg1, arg2){
+	if(arguments.length === 0) {
+		grunt.log.write(this.name + ", no args.");
+	} else {
+		grunt.log.write(this.name + ", arg1=" + arg1 + ", arg2=" + arg2);
+	}
+});
+```
+
+- Custom Task;
+
+
+| eg.
+```js
+module.exports = function(grunt) {
+	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+		uglify: {
+			options: {
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %>*/\n'
+			},
+			build: {
+				src: 'src/<%= pkg.name %>.js',
+				dest: 'build/<%= pkg.name %>.min.js'
+			}
+		},
+		concat: {
+			options: {
+				separator: ";"
+			},
+			dist: {
+				src: ['src/**/*.js'],
+				dest: 'dist/<%= pkg.name %>.js'
+			}
+		},
+		qunit: {
+			files: ['test/**/*.html']
+		},
+		jshint: {
+			files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+			options: {
+				globals: {
+					jQuery: true,
+					console: true,
+					module: true
+				}
+			}
+		},
+		watch: {
+			files: ['<%= jshint.files %>'],
+			tasks: ['jshint', 'qunit']
+		}
+
+	});
+
+	// grunt.loadNpmTasks('grunt-contrib-uglify');
+	// grunt.loadNpmTasks('grunt-contrib-concat');
+	// grunt.loadNpmTasks('grunt-contrib-qunit');
+	// grunt.loadNpmTasks('grunt-contrib-jshint');
+	// grunt.loadNpmTasks('grunt-contrib-watch');
+
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+	grunt.registerTask('test', ['jshint', 'qunit']);
+	grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+
+	grunt.registerTask('log', 'log some stuff', function() {
+		grunt.log.write('Logging some stuff ...').error();
+	});
+};
+
+```
 
 | importing external data
 - `grunt.file.readJSON()`

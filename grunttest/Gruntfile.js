@@ -1,56 +1,28 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %>*/\n'
-			},
-			build: {
-				src: 'src/<%= pkg.name %>.js',
-				dest: 'build/<%= pkg.name %>.min.js'
+			log: {
+				foo: [1, 2, 3],
+				bar: 'Hello WWorld',
+				baz: false
 			}
-		},
-		concat: {
-			options: {
-				separator: ";"
-			},
-			dist: {
-				src: ['src/**/*.js'],
-				dest: 'dist/<%= pkg.name %>.js'
-			}
-		},
-		qunit: {
-			files: ['test/**/*.html']
-		},
-		jshint: {
-			files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
-			options: {
-				globals: {
-					jQuery: true,
-					console: true,
-					module: true
-				}
-			}
-		},
-		watch: {
-			files: ['<%= jshint.files %>'],
-			tasks: ['jshint', 'qunit']
-		}
-
 	});
 
-	// grunt.loadNpmTasks('grunt-contrib-uglify');
-	// grunt.loadNpmTasks('grunt-contrib-concat');
-	// grunt.loadNpmTasks('grunt-contrib-qunit');
-	// grunt.loadNpmTasks('grunt-contrib-jshint');
-	// grunt.loadNpmTasks('grunt-contrib-watch');
 
-	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+	grunt.registerMultiTask('log', 'log some stuff', function() {
+		grunt.log.write(this.target + ":" + this.data + " " + this);
+		// return false;
+	});
 
-	grunt.registerTask('test', ['jshint', 'qunit']);
-	grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+	grunt.registerTask('log2', 'log some stuff', function() {
+		// grunt.log.write(this.target + ":" + this.data + " ");
+		return false;
+	});
 
-	grunt.registerTask('log', 'log some stuff', function() {
-		grunt.log.write('Logging some stuff ...').error();
+	grunt.registerTask('foo', 'A sample task that logs stuff.', function(arg1, arg2){
+		if(arguments.length === 0) {
+			grunt.log.write(this.name + ", no args.");
+		} else {
+			grunt.log.write(this.name + ", arg1=" + arg1 + ", arg2=" + arg2);
+		}
 	});
 };

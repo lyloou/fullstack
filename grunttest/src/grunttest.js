@@ -1,8 +1,9 @@
 console.log("Hello JS");
 
 function hello() {
+
   // i'm comment
-  console.log("hello");
+  console.log("hello")
 }
 
 jj = 53;
