@@ -1,5 +1,15 @@
 
 
+| root用户身份的umask权限默认是：022
+  一般用户身份的umask权限默认是：002 --p183
+
+| 设置umask: `umask 002`
+- 具体运算规则，是默认的权限减去umask数值。
+
+| 新建文件的默认权限：-rw-rw-rw-
+  新建文件夹的默认权限：drwxrwxrwx
+注意：具体的生成结果还得依赖于umask的值(拿掉umask的那一部分)。
+
 | `ll; ls`:
 `;`分号表示连续命令的执行；
 
@@ -46,3 +56,8 @@
 # 《鸟哥的Linux私房菜》读书笔记
 
 =============
+
+## 错误
+| p181
+> 修改属性：chown -R dmtsai:users/tmp/chapter7_1
+  修改属性：chown -R dmtsai:users /tmp/chapter7_1 // 少了一个空格
