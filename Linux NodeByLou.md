@@ -1,5 +1,20 @@
 
 
+| 通过find来按时间属性查找：
+- mtime
+- ctime
+- atime
+
+| 更新locate数据库：
+`updatedb`
+
+| 按文件名查找：
+- `whereis`
+- `locate`
+
+| 查找`commond`的路径:
+`which -a ifconfig`
+
 | root用户身份的umask权限默认是：022
   一般用户身份的umask权限默认是：002 --p183
 
