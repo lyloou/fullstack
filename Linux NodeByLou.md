@@ -1,5 +1,9 @@
 
 
+| 整个filesystem其实都是VFS（Virtual Filesystem Switch）进行管理；
+
+| 根目录的上一级就是他自己。 `ls -ild / /. /..`，通过这个命令发现`inode`都是2；
+
 | Ext2文件系统 --p197
 
 ## 第8章
