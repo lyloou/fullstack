@@ -1,4 +1,17 @@
+|
 
+| 要制作连接文件必须要使用`ln`这个命令；--p215
+```sh
+ln [-sf] 源文件 目标文件
+```
+
+| `symbolic link`符号连接；（类似于windows上的快捷方式）
+
+| hard link连接有限制：
+- 不能跨文件系统；
+- 不能连接到目录；
+
+| 注意硬链接和软连接的区别；--p213
 
 | 整个filesystem其实都是VFS（Virtual Filesystem Switch）进行管理；
 
