@@ -1,4 +1,18 @@
-|
+
+| 磁盘挂载： mount
+
+| 磁盘检验：fsck, badblocks
+
+| 磁盘分区完成后，进行格式化操作：`mkfs`
+
+| fdisk 没有办法处理大于2TB以上的磁盘分区。（可以使用parted这个命令） --p223
+
+| fdisk
+需要以管理员身份运行
+```sh
+fdisk /dev/sda
+fdisk /dev/sdb # 注意不需要带具体数值
+```
 
 | 要制作连接文件必须要使用`ln`这个命令；--p215
 ```sh
@@ -97,3 +111,6 @@ ln [-sf] 源文件 目标文件
 | p181
 > 修改属性：chown -R dmtsai:users/tmp/chapter7_1
   修改属性：chown -R dmtsai:users /tmp/chapter7_1 // 少了一个空格
+
+> 答： mkfs-tvfat/dev/hdc6
+  答： mkfs -t vfat /dev/hdc6  
