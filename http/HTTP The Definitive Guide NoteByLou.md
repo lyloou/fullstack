@@ -1,4 +1,13 @@
 
+
+| Urls give you and your browser all you need to find a piece of
+information. They define the particular resource you want,
+where it is located, and how to get it.
+
+| ![URL Component](./url_component.png)
+
+## URLs and Resources
+
 | Agents
 User agents (or just agents) are client programs that make HTTP requests on the
 user's behalf. (用来发出HTTP请求的客户端程序，例如：web浏览器) --p19
