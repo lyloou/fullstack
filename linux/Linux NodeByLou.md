@@ -1,4 +1,34 @@
 
+
+| 挂载点是什么？一定是目录。 --p235
+
+| 开机挂载
+`/etc/fstab (file system table)`就是将我们利用 mount 命令进行挂载时，
+将所有的参数写入到这个文件中就可以了。
+
+| 使用`hdparm` 在sata上做测试：
+```sh
+hdparm -Tt /dev/sda
+hdparm -Tt /dev/sdb
+```
+
+| 可以通过Label的方式进行挂载： --p231
+```sh
+mount -L "vbird_logical" /mnt/ccc
+```
+
+| e.g., 挂载一个iso文件到`/mnt/ccc`
+```sh
+mount xxxx.iso /mnt/ccc
+```
+一般这种iso文件都是只读形式的，因此可能会有下面这种提示：
+`mount: /dev/loop0 is write-protected, mounting read-only`
+
+| 进入到挂载目录中，进行卸载操作是不成功的。
+`umount: /media/cdrome: device is busy`
+解决办法是退出挂载目录，重新`umount`
+--p230
+
 | 磁盘挂载： mount
 
 | 磁盘检验：fsck, badblocks
