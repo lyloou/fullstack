@@ -1,5 +1,9 @@
 
 
+| 按照制定的参数格式设置到`/etc/fstab`文件中，即实现开机挂载。
+注意：需要检查写入到`/etc/fstab`的语法有没有错误，这个很重要，因为文件如果写错了，
+则你的Linux很可能将无法顺利开机完成！--p236
+
 | 挂载点是什么？一定是目录。 --p235
 
 | 开机挂载
@@ -23,6 +27,7 @@ mount xxxx.iso /mnt/ccc
 ```
 一般这种iso文件都是只读形式的，因此可能会有下面这种提示：
 `mount: /dev/loop0 is write-protected, mounting read-only`
+镜像文件不刻录就挂载使用。
 
 | 进入到挂载目录中，进行卸载操作是不成功的。
 `umount: /media/cdrome: device is busy`
