@@ -1,3 +1,12 @@
+
+| 光盘刻录工具： cdrecord --p267
+
+| 新建镜像文件：mkisofs --p265
+
+| 和 `dump` 备份对应的是恢复 `restore` --p262
+
+| `dump`,除了能针对整个文件系统备份之外，也能够仅针对目录来备份。 --p259
+
 | 打包的时候，忽略某些文件： tar -jcv -f /root/system.tar.bz2 --exclude=/root/etc*
 --p257
 
