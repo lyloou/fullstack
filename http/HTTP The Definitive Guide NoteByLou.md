@@ -1,3 +1,10 @@
+| 
+
+| Status  --p59
+- 100-199: Informational Status Codes
+- 200-299: Success Status Codes
+- 300-399:Redirection Status Codes
+
 
 
 | The TRACE method is used primarily for diagnostics;
@@ -67,7 +74,7 @@ end of the list of headers and the beginning of the entity body.
 
 | messages --p46
 request message:
-```
+```html
 <method> <request-URL> <version>
 <headers>
 
@@ -75,7 +82,7 @@ request message:
 ```
 
 response message:
-```
+```html
 <version> <status> <reason-phrase>
 <headers>
 
