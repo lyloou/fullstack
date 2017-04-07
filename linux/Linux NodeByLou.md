@@ -1,5 +1,36 @@
 
 
+| 睡不着觉：20170407, 起来看看。
+
+| shell script 的追踪与调试：  --p397
+```sh
+sh [-nvx] scripts.sh
+-n: 不要执行 script, 仅查询语法的问题；
+-v: 在执行 script 前，现将script的内容输出到屏幕上；
+-x: 将使用到的 script 内容显示到屏幕上。
+```
+
+| 运行程序时出现错误：通过以下方案解决。
+- [syntax error: Bad for loop variable解决办法(ubuntu)](https://my.oschina.net/zphj1987/blog/77884)
+- [DashAsBinSh](https://wiki.ubuntu.com/DashAsBinSh)
+> 错误为Syntax error: Bad for loop variable
+解决办法：sudo dpkg-reconfigure dash
+在选择项中选No
+从 ubuntu 6.10 开始，ubuntu 就将先前默认的bash shell 更换成了dash shell；其表现为 /bin/sh 链接倒了/bin/dash而不是传统的/bin/bash。
+ubuntu edgy是第一个将dash作为默认shell来发行的版本，这似乎是受了debian的影响。wiki 里面有官方的解释，https://wiki.ubuntu.com/DashAsBinSh，主要原因是dash更小，运行更快，还与POSIX兼容。
+但 目前存在的问题是，由于shell的更换，致使很多脚本出错，毕竟现在的很多脚本不是100%POSIX兼容。
+在wiki里面也说到，如 何将默认的shell改回bash，方法就是
+在终端执行 sudo dpkg-reconfigure dash
+然后选 择 no
+
+| 在 for 循环中如何表示一段连续的范围：
+```sh
+for sitenu in $(seq 1 100)
+do
+  #statements
+done  
+```
+
 | while 条件成立时执行条件；util 条件成立时退出条件； --p394
 
 | 直到型（util）: 满足条件，就终止循环；
