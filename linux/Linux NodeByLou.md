@@ -1,5 +1,27 @@
 
 
+| while 条件成立时执行条件；util 条件成立时退出条件； --p394
+
+| 直到型（util）: 满足条件，就终止循环；
+```sh
+until [[ condition ]]; do
+  #statements
+done
+```
+
+| 当型(while)：满足条件时，就进行循环；
+```sh
+while [condition]
+do
+  程序段落
+done  
+```
+
+
+| 循环  --p393
+- 不断地执行某个程序段落；
+- 直到用户设置的条件达成为止；
+
 | 利用 `function` 来重用轮子
 在shell script 当中的 function 的设置一定要在程序的最前面，这样才能够在执行时被找到
 可用的程序段。
