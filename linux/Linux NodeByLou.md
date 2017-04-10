@@ -1,3 +1,43 @@
+| 忘记 root 密码：  --p406
+- 在用户维护模式下修改；
+- 以 Live CD 开机后挂载根目录去修改 /etc/shadow
+
+| 一般用户密码忘记了：这个最容易解决，请系统管理员帮忙，他会重新设置好你得密码而不需要知道你的旧密码
+(利用 root 身份 使用 passwd 命令) --p406
+
+| shadow 文件结构: --p403
+```sh
+lou@Lou:~$ sudo head -n 4 /etc/shadow
+root:$6$ExVgN6IF$GzxieFmtydKzA6pCaIjd1k/wIhQmfqSDNQ6vrnCXZ4UkpgAQ5mdCu3Y4DS2DsnBkku4IzwW2HV4CxB2.I1.Oz.:17215:0:99999:7:::
+daemon:*:16911:0:99999:7:::
+bin:*:16911:0:99999:7:::
+sys:*:16911:0:99999:7:::
+```
+1. 账号名称
+2. 密码
+3. 最近更动密码的日期
+4. 密码不可被更动的天数
+5. 密码需要重新更改的天数
+6. 密码需要更改期限前的警告天数
+7. 密码过期后的账号宽限时间
+8. 账号失效日期
+9. 保留
+
+| passwd 的文件结构： --p403
+```sh
+lou@Lou:~$ head -n 4 /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+```
+1. 账号名称
+2. 密码
+3. UID
+4. GID
+5. 用户信息说明列
+6. 主文件夹
+7. Shell
 
 | 计算机认识 0 与 1, 人们认识账号；文件属性中的所有者实际上存储的是数字。 --p401
 
