@@ -1,4 +1,28 @@
+| 用户修改与删除: usermod  userdel --p416
 
+| 对于 root 用户，唉～要帮一般账号新设密码需要使用 `passwd 账号` 的格式，使用 `passwd`
+表示修改自己的密码。--p414
+
+| 使用 useradd 来创建 Linux 上的账号时至少会参考： --p413
+```
+/etc/default/useradd
+/etc/login.defs
+/etc/skel/*
+```
+
+| 在通过 useradd 来创建用户时，默认设置： --p411
+```sh
+useradd -D
+```
+
+| 系统账号默认都不会主动创建主文件夹(可以通过参数 `-m` 强制添加)； --p410
+
+| 添加用户: --p410
+```sh
+useradd vlou
+passwd vlou
+grep vlou /etc/passwd /etc/shadow /etc/group /home/vlou # 查看创建后的属性
+```
 
 | 加入用户组： --p408
 - 通过 root ，让其通过 usermod 命令；
