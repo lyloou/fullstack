@@ -1,3 +1,19 @@
+| 针对新创建的文件，设置默认的 acl; --p426
+```sh
+setfacl -m d:u:myuser1:rx /srv/projecta # 这样在 projecta目录中新创建的文件，就默认有 rx 权限了。
+```
+
+| 针对某个用户具体设置权限： --p424
+```sh
+setfacl -m u:vbird1:rx test.txt # 对于文件 test.txt，给用户 vbird1 设置权限 rx
+setfacl -m g:mygroup1:rx test.txt # 同上，设置用户组权限
+```
+
+| acl的设置：getfacl, setfacl  --p424
+
+| ACL (Access Control List), 提供传统的 owner、 group、 others 的 read、
+write、 execute 权限之外的具体权限设置； --p423
+
 | 用户组的新增与删除： --p420
 - groupadd: 添加用户组
 - groupmod: 修改用户组（例如用户组 id, 用户组名）
