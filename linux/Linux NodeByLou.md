@@ -1,3 +1,21 @@
+
+
+| 只执行一个只有 root 才能进行的命令，且执行完毕就恢复原本的身份。--p429
+```sh
+su - -c "head -n 3 /etc/shadow"
+```
+
+| 使用“su -”切换成 root 的身份，以 login shell 的方式。 --p428
+
+| 单纯使用“su”切换成 root 的身份，读取的变量设置方式为 non-login shell 的方式，
+这种方式下很多原本的变量不会被改变。--p428
+
+| 以`su -` 命令来切换，代表使用 login-shell 的变量文件读取方式来登录系统。 --p428
+
+| 让一般用户转变为 root 身份。 --p428
+- 以 “su -” 直接将身份变成 root。（需要密码）
+- 以 “sudo命令” 执行 root 的命令串。
+
 | 针对新创建的文件，设置默认的 acl; --p426
 ```sh
 setfacl -m d:u:myuser1:rx /srv/projecta # 这样在 projecta目录中新创建的文件，就默认有 rx 权限了。
