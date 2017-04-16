@@ -1,3 +1,12 @@
+| 我们以 passwd 这个命令调用 PAM。 当你执行 passwd 后这个程序调用 PAM 的流程是： --p435
+1. 用户开始执行 /usr/bin/passwd 这支程序，病输入密码；
+2. passwd 调用 PAM 模块进行验证；
+3. PAM 模块会到 /etc/pam.d/ 中找寻与程序（passwd）同名的配置文件。
+4. 依据 /etc/pam.d/passwd 内的配置，引用相关的 PAM 模块逐步进行验证分析；
+6. passwd 这支程序会依据 PAM 回传的结果决定下一个操作（重新输入新密码或者通过验证）
+
+| PAM（Pluggable Authentication Modules, 嵌入式模块）,
+为解决账号密码可能不同步的验证问题。 --p434
 
 | 走的很艱難不是？ 沒事，加油！
 
