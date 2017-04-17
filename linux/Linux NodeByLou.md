@@ -1,3 +1,19 @@
+
+
+| 为什么 root 无法以 telnet 直接登录系统，但是却能够使用 ssh 直接登录？
+telnet 会引用 login 的 PAM 模块，而 login 的验证会有 /etc/securetty 的限制。
+由于远程连接属于 pts/n (n 为数字)的动态终端机接口设备名称，并么有写入到 /etc/securetty,
+因此 root 无法以 telnet 登录远程主机。而 ssh 使用的是 /etc/pam.d/sshd 这个模块，
+这个模块的验证阶段没有加入 pam_securetty， 因此就没有 /etc/securetty的限制！
+故可以从远程直接联机到服务器。
+
+| login 的 PAM 验证机制流程：
+1. 验证阶段；
+2. 授权阶段；
+3. 密码阶段；
+4. 会议阶段；
+
+
 | 我们以 passwd 这个命令调用 PAM。 当你执行 passwd 后这个程序调用 PAM 的流程是： --p435
 1. 用户开始执行 /usr/bin/passwd 这支程序，病输入密码；
 2. passwd 调用 PAM 模块进行验证；
