@@ -1,5 +1,14 @@
 
 
+| mail -s "bashrc file content" lou < ~/.bashrc ：讲文件的内容通过邮件发给 lou --p442
+
+| wall、write 命令的进行需要等到用户在线才行。可以通过 mail 的方式寄出邮件。--p442
+
+| 通过广播的方式发送消息： wall "I will shutdown my linux server..." --p442
+
+| 不接收任何消息： mesg n
+  接收消息： mesg y
+
 | 为什么 root 无法以 telnet 直接登录系统，但是却能够使用 ssh 直接登录？
 telnet 会引用 login 的 PAM 模块，而 login 的验证会有 /etc/securetty 的限制。
 由于远程连接属于 pts/n (n 为数字)的动态终端机接口设备名称，并么有写入到 /etc/securetty,
