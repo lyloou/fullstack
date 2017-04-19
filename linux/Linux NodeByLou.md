@@ -1,4 +1,13 @@
+| 特殊账号的手工新建：--p445
 
+| 纯数字账号，容易和其他属性混淆（例如：UID 501, 权限 755），建议不要使用纯数字形式的账号；--p444
+
+| chpasswd 常用于批量新建账号：`echo "dmtsai:abcdef" | chpasswd -m`
+
+
+| 一般来说，如果你正常使用 useradd 增加用户，使用 pwconv 并不会有任何的操作，因为
+`/etc/passwd` 与 `/etc/shadow` 并不会有以上两点问题（两个文件不对应）。不过，
+如果手动设置账号，这个 pwconv 就很重要了。--p444
 
 | mail -s "bashrc file content" lou < ~/.bashrc ：讲文件的内容通过邮件发给 lou --p442
 
