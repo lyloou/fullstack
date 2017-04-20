@@ -1,4 +1,41 @@
 
+
+| 通过调用 fragment 的 `isAdded()` 方法，来判断当前的 fragment 是否阵亡。
+- 具体用法参考：`com.example.android.architecture.blueprints.todoapp.tasks.TasksContract.isActive();`
+- `isAdded()`文档：Return true if the fragment is currently added to its activity.
+
+
+| 通过图像 URL 设置圆角图像：
+```java
+private void setCircleIcon(ImageView view) {
+    String url = "https://img.gcall.com/dca5/M00/10/8E/wKhoNlggetaENWylAAAAAAAAAAA457.jpg";
+    final int w = Uscreen.dp2Px(mContext, 48);
+    Glide.with(mContext)
+            .load(url)
+            .centerCrop()
+            .fitCenter()
+            .thumbnail(0.1f)
+            .placeholder(R.mipmap.ic_launcher)
+            .crossFade()
+            .override(w, w)
+            .transform(new BitmapTransformation(mContext) {
+                @Override
+                protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
+                    return Uview.getBitmapByXfermode(mContext, toTransform,
+                            Color.parseColor("#dddddd"),
+                            w,
+                            w, PorterDuff.Mode.SRC_IN);
+                }
+
+                @Override
+                public String getId() {
+                    return getClass().getName();
+                }
+            })
+            .into(view);
+}
+```
+
 | apk 安装路径： --p220(q1)
 - `/system/app` : 系统及别的 apk;
 - `/data/app` : 用户安装的 apk;
@@ -107,3 +144,12 @@ private void changeBitmap2(){
 
 ## 说明
 - (q1) --《Android群英传》
+
+
+
+
+
+
+### tips
+| 在 Android Studio 中的 app module 中运行 Java 测试代码，会发现很慢；
+可以尝试创建 java library 模块来运行 java 测试项目；
