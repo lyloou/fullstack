@@ -7,7 +7,7 @@
 
 | 通过图像 URL 设置圆角图像：
 ```java
-private void setIcon(ImageView view) {
+private void setCircleIcon(ImageView view) {
     String url = "https://img.gcall.com/dca5/M00/10/8E/wKhoNlggetaENWylAAAAAAAAAAA457.jpg";
     final int w = Uscreen.dp2Px(mContext, 48);
     Glide.with(mContext)
