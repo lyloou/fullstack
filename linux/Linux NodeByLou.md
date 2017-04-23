@@ -1,5 +1,22 @@
 
 
+| Education is :
+> Education is what, when, and why to do things.
+> Training is how to do it. Most your courses have been Training.
+> I am trying to talk about the Education part.
+> --Richard W. Hamming (http://mat.uc.pt/~zhang/teaching.html)
+
+| api使用步骤：(this is how)
+- 调用的命令；（知道自己要干啥）
+- 设置参数；（知道自己干啥时要选择那些配置）
+- 整串执行；（开始 do it. ）
+
+| warnquota: 对超过限额者发出警告信； --p460
+
+| quota 的报表主要有两种模式：
+一种是针对每个个人或用户组的quota 命令，
+一个是针对整个文件系统的 repquota 命令；
+
 | 坐而言不如起而行。 --p454
 
 | Quota的使用限制： --p452
