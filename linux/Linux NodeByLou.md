@@ -1,4 +1,11 @@
+| 
 
+| `crontab -l` 显示 crontab 的工作内容 --p500
+  `crontab -r` 移除全部的 crontab 的工作内容
+
+| crontab 的限制同 at命令，主要通过两个文件（cron.allow、cron.deny） --p498
+
+| 循环执行的例行性工作调度（crontab） --p498
 
 | batch 系统有空时才进行后台任务。 --p497
 
