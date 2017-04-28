@@ -1,4 +1,16 @@
-| 
+| 使用 crontab 时需要注意： --p502
+- 资源分配不均；
+- 取消不要的输出选项；
+- 安全的检验；
+- 周与日、月不可同时并存；
+
+| cron 这个服务的最低检测限制是“分钟”。（编辑保存后，cron 的设置就生效了，
+也有些例外情况，这时重启 crond 这个服务即可 `/etc/init.d/crond restart`） --p500
+
+| 需要注意的是`crontab -e` 这个 crontab 其实是 /usr/bin/crontab 这个执行文件，
+但是 /etc/crontab 可是一个“纯文本文件”，可以用 root 身份来编辑这个文件。--p500
+
+| 不敢忘记初衷。
 
 | `crontab -l` 显示 crontab 的工作内容 --p500
   `crontab -r` 移除全部的 crontab 的工作内容
