@@ -1,5 +1,7 @@
 
 
+| 引入开源库的时候，注意要及时引入 proguard （以免忘记）
+
 | 通过调用 fragment 的 `isAdded()` 方法，来判断当前的 fragment 是否阵亡。
 - 具体用法参考：`com.example.android.architecture.blueprints.todoapp.tasks.TasksContract.isActive();`
 - `isAdded()`文档：Return true if the fragment is currently added to its activity.
