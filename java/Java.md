@@ -1,5 +1,29 @@
 
 
+| `当类似的代码多次出现的时候，就可以考虑将其封装起来。`
+
+## 日期、时间格式的转换
+>
+- [GankBeautyResultToItemsMapper.java](https://github.com/lyloou/RxJavaSamples/blob/master/app/src/main/java/com/rengwuxian/rxjavasamples/util/GankBeautyResultToItemsMapper.java)
+
+```java
+String strDate = "2017-05-09T14:28:32.974Z";
+SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS'Z'");
+SimpleDateFormat outputFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+try {
+    Date inputDate = inputFormat.parse(strDate);
+    String outputDate = outputFormat.format(inputDate);
+    System.out.println(outputDate);
+} catch (ParseException e) {
+    e.printStackTrace();
+}
+```
+
+## 打印出好看的`list`
+```java
+System.out.println(Arrays.toString(list.toArray()));
+```
+
 ## HashMap 用来缓存对象
 ```java
 private static final HashMap<String, Object> objectsCache = new Hasn<>();

@@ -1,3 +1,19 @@
+
+
+| [Which remote URL should I use?](https://help.github.com/articles/which-remote-url-should-i-use/)
+- Cloning with HTTPS URLs **(recommended)**
+- Cloning with SSH URLs
+- Cloning with Subversion
+
+
+
+| change origin's url
+> Instead of removing and re-adding,  you can do this:
+  `git remote set-url orign git:new.url.here`
+  See this question: [Change the URI (URL) for a remote Git repository - Stack Overflow](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
+- [how to remove remote origin from git repo](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
+
+
 | git stash
 > Git 还提供了一个 stash 功能，可以把当前工作状态“储藏”起来，等以后恢复现场后继续工作。
 > [Bug分支](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137602359178794d966923e5c4134bc8bf98dfb03aea3000)
