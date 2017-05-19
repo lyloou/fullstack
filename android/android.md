@@ -1,4 +1,167 @@
+| 规范
+*资源*
+- `color.xml` 由基本色构成，而不是针对每个模块或组件分别设置。
+- `dimens.xml` 同上。
+- `string.xml` 由于语言的多样性，属性名具体一点会更好。另外，value 值不要全部使用大写（用`textAllCaps`）。
+- `layout` 中的层级不要太多。
+> https://github.com/futurice/android-best-practices#resources
 
+| RecyclerView
+- 针对多种类型的情况，可以创建多个 `ViewHolder`和设置多个 `type`
+- 分页加载（加载更多）
+> http://www.gadgetsaint.com/android/recyclerview-header-footer-pagination/#.WRwxJGh96Hs
+
+*方案一：*
+```java
+mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+    @Override
+    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+        super.onScrollStateChanged(recyclerView, newState);
+
+        int lastvisibleitemposition = mLayoutManager.findLastVisibleItemPosition();
+
+        if (lastvisibleitemposition == mAdapter.getItemCount() - 1) {
+
+            if (!loading && !isLastPage) {
+
+                loading = true;
+                fetchData((++pageCount));
+                // Increment the pagecount everytime we scroll to fetch data from the next page
+                // make loading = false once the data is loaded
+                // call mAdapter.notifyDataSetChanged() to refresh the Adapter and Layout
+
+            }
+
+
+        }
+    }
+});
+```
+
+*方案二：*
+```java
+// http://www.jianshu.com/p/4feb0c16d1b5
+private RecyclerView.OnScrollListener mListener = new RecyclerView.OnScrollListener() {
+    @Override
+    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+        super.onScrollStateChanged(recyclerView, newState);
+    }
+
+    @Override
+    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+        super.onScrolled(recyclerView, dx, dy);
+
+        LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        int lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+        int totalItemCount = layoutManager.getItemCount();
+
+        if (totalItemCount < 250 && lastVisibleItem >= totalItemCount - 4) {
+            // 注意：要限制请求，否则请求太多次数，导致服务器崩溃或者服务器拒绝请求（罪过，罪过）。
+            if (mIsLoading) {
+                Log.i(TAG, "onScrolled: " + "加载中---------");
+            } else {
+                Log.i(TAG, "onScrolled: " + "加载更多了=======》");
+                loadSubject();
+            }
+
+        }
+
+        Log.d(TAG, "onScrolled: lastVisibleItem=" + lastVisibleItem);
+        Log.d(TAG, "onScrolled: totalItemCount=" + totalItemCount);
+
+    }
+};
+```
+
+| Avoid Maven dynamic dependency resolution. (such as `2.1.+`)
+  this result in different and unstable builds or subtle, untracked difference
+  in behavior between builds.
+
+| Stetho - A debug bridge for Android applications
+> Stetho is a debug bridge for Android applications from Facebook that integrates with the Chrome desktop browser's Developer Tools. With Stetho you can easily inspect your application, most notably the network traffic. It also allows you to easily inspect and edit SQLite databases and the shared preferences in your app. You should, however, make sure that Stetho is only enabled in the debug build and not in the release build variant.
+> https://github.com/futurice/android-best-practices#use-stetho
+
+| 针对测试版本和发布版本使用不同的 appId, 这样两个版本就可以同时存在在一个设备上了。
+可以通过前缀或后缀的方式来区分。
+> https://github.com/futurice/android-best-practices#gradle-configuration
+
+| 在配置 `build.gradle` 的时候，避免直接写入敏感信息（例如：密码），而是写入到版本控制工具
+忽略的文件`gradle.properties`中。
+> https://github.com/futurice/android-best-practices#gradle-configuration
+
+
+## [Android Best Practices](https://github.com/futurice/android-best-practices)
+after...
+- http://blog.futurice.com/tech-pick-of-the-week-rx-for-net-and-rxjava-for-android
+- https://github.com/square/mortar
+- Use Stetho
+
+| TextView html 渲染
+```java
+public static void renderWithHtml(final TextView tv, String data) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        tv.setText(Html.fromHtml(data, Html.FROM_HTML_MODE_COMPACT));
+    } else {
+        tv.setText(Html.fromHtml(data));
+    }
+}
+```
+
+| TextView 渲染字体
+> [Android TextView个别字体格式设置小结 - 简书](http://www.jianshu.com/p/2671e78089f9)
+
+```java
+SpannableString msp = new SpannableString("字体测试字体大小一半两倍前景色背景色正常粗体斜体粗斜体下划线删除线x1x2电话邮件网站短信彩信地图X轴综合");
+
+//设置字体(default,default-bold,monospace,serif,sans-serif)
+msp.setSpan(new TypefaceSpan("monospace"), 0, 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+msp.setSpan(new TypefaceSpan("serif"), 2, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+//设置字体大小（绝对值,单位：像素）
+msp.setSpan(new AbsoluteSizeSpan(20), 4, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+msp.setSpan(new AbsoluteSizeSpan(20, true), 6, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //第二个参数boolean dip，如果为true，表示前面的字体大小单位为dip，否则为像素，同上。
+
+//设置字体大小（相对值,单位：像素） 参数表示为默认字体大小的多少倍
+msp.setSpan(new RelativeSizeSpan(0.5f), 8, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //0.5f表示默认字体大小的一半
+msp.setSpan(new RelativeSizeSpan(2.0f), 10, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //2.0f表示默认字体大小的两倍
+
+//设置字体前景色
+msp.setSpan(new ForegroundColorSpan(Color.MAGENTA), 12, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //设置前景色为洋红色
+
+//设置字体背景色
+msp.setSpan(new BackgroundColorSpan(Color.CYAN), 15, 18, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //设置背景色为青色
+
+//设置字体样式正常，粗体，斜体，粗斜体
+msp.setSpan(new StyleSpan(android.graphics.Typeface.NORMAL), 18, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //正常
+msp.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 20, 22, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //粗体
+msp.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC), 22, 24, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //斜体
+msp.setSpan(new StyleSpan(android.graphics.Typeface.BOLD_ITALIC), 24, 27, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  //粗斜体
+
+//设置下划线
+msp.setSpan(new UnderlineSpan(), 27, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+//设置删除线
+msp.setSpan(new StrikethroughSpan(), 30, 33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+//设置上下标
+msp.setSpan(new SubscriptSpan(), 34, 35, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);     //下标
+msp.setSpan(new SuperscriptSpan(), 36, 37, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);   //上标
+
+//超级链接（需要添加setMovementMethod方法附加响应）
+msp.setSpan(new URLSpan("tel:4155551212"), 37, 39, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);     //电话
+msp.setSpan(new URLSpan("mailto:webmaster@google.com"), 39, 41, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);     //邮件
+msp.setSpan(new URLSpan("http://www.baidu.com"), 41, 43, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);     //网络
+msp.setSpan(new URLSpan("sms:4155551212"), 43, 45, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);     //短信   使用sms:或者smsto:
+msp.setSpan(new URLSpan("mms:4155551212"), 45, 47, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);     //彩信   使用mms:或者mmsto:
+msp.setSpan(new URLSpan("geo:38.899533,-77.036476"), 47, 49, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);     //地图
+
+//设置字体大小（相对值,单位：像素） 参数表示为默认字体宽度的多少倍
+msp.setSpan(new ScaleXSpan(2.0f), 49, 51, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); //2.0f表示默认字体宽度的两倍，即X轴方向放大为默认字体的两倍，而高度不变
+//SpannableString对象设置给TextView
+tokenTv.setText(msp);
+//设置TextView可点击
+tokenTv.setMovementMethod(LinkMovementMethod.getInstance());
+```
 
 | 引入开源库的时候，注意要及时引入 proguard （以免忘记）
 

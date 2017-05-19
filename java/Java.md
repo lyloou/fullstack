@@ -48,6 +48,7 @@ public Object getOut(String key, Object default) {
 }
 ```
 
+# 资源
 
 ## 环境变量配置
 ```cmd
@@ -55,3 +56,6 @@ CLASSPATH =.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
 JAVA_HOME =C:\jdk8.0
 Path=%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
 ```
+
+## java tutorial 搜索
+https://docs.oracle.com/javase/tutorial/search.html
