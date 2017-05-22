@@ -1,3 +1,6 @@
+## Ubuntu 系统强制关闭进程。
+> $ps -aux | grep [应用名]  # 抓取指定应用的进程信息，几下 应用的pid
+> $kill -9 [应用的pid]
 
 ## [Top 6 Things To Do After Installing Ubuntu 16.04](https://www.youtube.com/watch?v=ZcpWofRAs-A)
 1. Be sure you are up to date:
