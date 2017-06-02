@@ -1,3 +1,40 @@
+| 相对远程分支的内容变更情况
+
+`git status`：查看本地未传送的提交次数；
+```bash
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+```
+
+`git cherry -v`： 查看未传送提交的描述/说明；
+```bash
+$ git cherry -v
++ d105e9bb16e606892863e6d8be3931174eedc601 update android.md
+```
+
+`git log master ^origin/master`：查看未传送提交的详细内容；
+```bash
+commit d105e9bb16e606892863e6d8be3931174eedc601 (HEAD -> master)
+Author: Lou <lyloou6@gmail.com>
+Date:   Fri Jun 2 09:47:19 2017 +0800
+
+    update android.md
+```
+
+> 由第三点，其实可以想到，将远程和本地分支位置调换，即`git log origin/master ^origin`，
+就可以查看远程库比本地库多的内容了。
+不过，不过，不过，得先执行`git fetch origin master` 命令，将远程仓库的 commit 内容同步
+到本地库。fetch 和 pull 的区别是： fetch 只同步远程库的 commit 信息（log信息），
+但不会将文件同步到本地（没有执行merge）。pull 则会将文件也同步到本地。
+使用 git log 的时候，提供参数 `-p` 可以查看更详细信息。
+
+pull = fetch + merge
+
+参考资料：
+- [git查看远程版本库和本地库的差异 | 星辰](http://blog.kainaodong.com/?p=12)
+- [git pull 和 git fetch 有什么区别？](https://ruby-china.org/topics/15729)
 
 
 | [Which remote URL should I use?](https://help.github.com/articles/which-remote-url-should-i-use/)
