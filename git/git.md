@@ -1,3 +1,18 @@
+| delete a git branch both locally and remotely.
+- `git branch -d {the_local_branch}`
+- `git push --delete {the_remote_branch}`
+
+> [How do I delete a Git branch both locally and remotely? - Stack Overflow](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely)
+
+| git reset 后丢弃远程的提交
+```bash
+git log # 获取log的某次提交commit id
+git reset --hard 0301382 # 回退到0301382
+git push --force # 强制推送到服务器端
+```
+
+- [github - git 怎样删除远程仓库的某次错误提交？ - SegmentFault](https://segmentfault.com/q/1010000002898735)
+
 | 相对远程分支的内容变更情况
 
 `git status`：查看本地未传送的提交次数；
