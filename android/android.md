@@ -105,9 +105,12 @@ scrollTabView.setOnScrollListener(new ScrollTabView.OnScrollListener() {
 public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
     int position = parent.getChildLayoutPosition(view);
     outRect.top = space;
-    outRect.left = space;
     if (position % 2 == 1) {
+        outRect.left = space / 2;
         outRect.right = space;
+    } else {
+        outRect.left = space;
+        outRect.right = space / 2;
     }
 }
 ```
