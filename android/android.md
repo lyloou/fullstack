@@ -1,4 +1,20 @@
-| tab悬浮效果实现：
+## 设置状态栏透明，并保持住 toolbar 在status之下（支持 API 19 以上）：
+1. 添加到 theme： `<item name="android:windowTranslucentStatus">true</item>`
+2. 使 toolbar 的 marginTop 正好等于 statusHeight：
+   ```java
+   public static void setToolbarMarginTop(Activity activity, Toolbar toolbar){
+       ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) toolbar.getLayoutParams();
+       params.topMargin = getStatusBarHeight(activity);
+   }
+
+   public static int getStatusBarHeight(Activity activity){
+       int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+       int statusBarHeight = activity.getResources().getDimensionPixelSize(resourceId);
+       return statusBarHeight;
+   }
+   ```
+
+## tab悬浮效果实现：
 搜索关键字：`Android tab悬浮`
 开源库（如果布局嵌套很复杂，则不一定适合）：https://github.com/carlonzo/StikkyHeader
 另一种解决思路：
@@ -83,7 +99,7 @@ scrollTabView.setOnScrollListener(new ScrollTabView.OnScrollListener() {
 });
 ```
 
-| GridLayoutManager 均分两列的装饰器ItemDecoration
+## GridLayoutManager 均分两列的装饰器ItemDecoration
 ```java
 @Override
 public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
@@ -96,7 +112,7 @@ public void getItemOffsets(Rect outRect, View view, RecyclerView parent, Recycle
 }
 ```
 
-| 规范
+## 规范
 *资源*
 - `color.xml` 由基本色构成，而不是针对每个模块或组件分别设置。
 - `dimens.xml` 同上。
@@ -104,7 +120,7 @@ public void getItemOffsets(Rect outRect, View view, RecyclerView parent, Recycle
 - `layout` 中的层级不要太多。
 > https://github.com/futurice/android-best-practices#resources
 
-| RecyclerView
+## RecyclerView
 - 针对多种类型的情况，可以创建多个 `ViewHolder`和设置多个 `type`
 - 分页加载（加载更多）
 > http://www.gadgetsaint.com/android/recyclerview-header-footer-pagination/#.WRwxJGh96Hs
@@ -171,19 +187,19 @@ private RecyclerView.OnScrollListener mListener = new RecyclerView.OnScrollListe
 };
 ```
 
-| Avoid Maven dynamic dependency resolution. (such as `2.1.+`)
+## Avoid Maven dynamic dependency resolution. (such as `2.1.+`)
   this result in different and unstable builds or subtle, untracked difference
   in behavior between builds.
 
-| Stetho - A debug bridge for Android applications
+## Stetho - A debug bridge for Android applications
 > Stetho is a debug bridge for Android applications from Facebook that integrates with the Chrome desktop browser's Developer Tools. With Stetho you can easily inspect your application, most notably the network traffic. It also allows you to easily inspect and edit SQLite databases and the shared preferences in your app. You should, however, make sure that Stetho is only enabled in the debug build and not in the release build variant.
 > https://github.com/futurice/android-best-practices#use-stetho
 
-| 针对测试版本和发布版本使用不同的 appId, 这样两个版本就可以同时存在在一个设备上了。
+## 针对测试版本和发布版本使用不同的 appId, 这样两个版本就可以同时存在在一个设备上了。
 可以通过前缀或后缀的方式来区分。
 > https://github.com/futurice/android-best-practices#gradle-configuration
 
-| 在配置 `build.gradle` 的时候，避免直接写入敏感信息（例如：密码），而是写入到版本控制工具
+## 在配置 `build.gradle` 的时候，避免直接写入敏感信息（例如：密码），而是写入到版本控制工具
 忽略的文件`gradle.properties`中。
 > https://github.com/futurice/android-best-practices#gradle-configuration
 
@@ -194,12 +210,12 @@ after...
 - https://github.com/square/mortar
 - Use Stetho
 
-| TextView 设置空格
+## TextView 设置空格
 ```xml
 &#160;&#160;&#160;&#8201;&#160;&#160;&#8201;
 ```
 
-| TextView html 渲染（注意：html渲染的方式无法改变字体的大小，可以调整颜色、粗细、斜体等属性）
+## TextView html 渲染（注意：html渲染的方式无法改变字体的大小，可以调整颜色、粗细、斜体等属性）
 ```java
 public static void renderWithHtml(final TextView tv, String data) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -210,7 +226,7 @@ public static void renderWithHtml(final TextView tv, String data) {
 }
 ```
 
-| TextView 渲染字体
+## TextView 渲染字体
 > [Android TextView个别字体格式设置小结 - 简书](http://www.jianshu.com/p/2671e78089f9)
 
 ```java
@@ -266,14 +282,14 @@ tokenTv.setText(msp);
 tokenTv.setMovementMethod(LinkMovementMethod.getInstance());
 ```
 
-| 引入开源库的时候，注意要及时引入 proguard （以免忘记）
+## 引入开源库的时候，注意要及时引入 proguard （以免忘记）
 
-| 通过调用 fragment 的 `isAdded()` 方法，来判断当前的 fragment 是否阵亡。
+## 通过调用 fragment 的 `isAdded()` 方法，来判断当前的 fragment 是否阵亡。
 - 具体用法参考：`com.example.android.architecture.blueprints.todoapp.tasks.TasksContract.isActive();`
 - `isAdded()`文档：Return true if the fragment is currently added to its activity.
 
 
-| 通过图像 URL 设置圆角图像：
+## 通过图像 URL 设置圆角图像：
 ```java
 private void setCircleIcon(ImageView view) {
     String url = "https://img.gcall.com/dca5/M00/10/8E/wKhoNlggetaENWylAAAAAAAAAAA457.jpg";
@@ -304,11 +320,14 @@ private void setCircleIcon(ImageView view) {
 }
 ```
 
+## 《Android群英传》 笔记
+
 | apk 安装路径： --p220(q1)
 - `/system/app` : 系统及别的 apk;
 - `/data/app` : 用户安装的 apk;
 
-| pm(package manager)： 主宰着应用的包管理；
+| android 管理器
+  pm(package manager)： 主宰着应用的包管理；
   am(activity manager): 主宰着应用的活动管理； --p210(q1)
 
 | 如果说系统信息好比是国家的 GDP， 那么 Apk 应用信息则像是对个人的经济普查。 --p210(q1)
@@ -410,18 +429,16 @@ private void changeBitmap2(){
 
 
 
-## 说明
-- (q1) --《Android群英传》
 
 
 
 
 
 
-### tips
+## Android 小 tips
 | 在 Android Studio 中的 app module 中运行 Java 测试代码，会发现很慢；
 可以尝试创建 java library 模块来运行 java 测试项目；
 
-| 使用 Refector （style）的姿势：
+| 使用 Refector （style）的正确姿势：
 将鼠标定位到要 refector 的标签中（不要选中任何代码），
 然后右键 `Refector --> Extract --> Style...`
