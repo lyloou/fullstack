@@ -26,7 +26,7 @@ System.out.println(Arrays.toString(list.toArray()));
 
 ## HashMap 用来缓存对象
 ```java
-private static final HashMap<String, Object> objectsCache = new Hasn<>();
+private static final Map<String, Object> objectsCache = new HashMap<>();
 
 // put in
 public void putIn(String key, Object obj) {
