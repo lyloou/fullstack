@@ -1,3 +1,8 @@
+## 使用 ButterKnife 可能会让你的IDE编译速度变慢。
+> In the initial configuration incremental compilation takes 45s out of 1m 10s, but if Butterknife is removed then project is compiled in 15s only! Three times faster! Whole incremental build without Butterknife is 40s.
+First and most important, the hypothesis was correct, modularizing project can significantly speed up build process, but not for all configurations.
+- [How modularization can speed up your Android app’s built time](https://medium.freecodecamp.org/how-modularisation-affects-build-time-of-an-android-application-43a984ce9968)
+
 ## 设置状态栏透明，并保持住 toolbar 在status之下（支持 API 19 以上）：
 1. 添加到 theme： `<item name="android:windowTranslucentStatus">true</item>`
 2. 使 toolbar 的 marginTop 正好等于 statusHeight：
@@ -449,3 +454,8 @@ private void changeBitmap2(){
 | 使用 Refector （style）的正确姿势：
 将鼠标定位到要 refector 的标签中（不要选中任何代码），
 然后右键 `Refector --> Extract --> Style...`
+
+| 给小图标设置tag值，
+ivSetting.setTag(room.getId());
+这样在进入设置界面时，可以通过 getTag的方式获取到room的id。
+> http://www.vogella.com/tutorials/Retrofit/article.html#create-activity
