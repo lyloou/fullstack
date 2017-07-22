@@ -1,3 +1,51 @@
+## install wine
+https://wiki.winehq.org/Ubuntu
+
+
+## 安装搜狗输入法
+1. 安装搜狗输入法之前，先移除fcitx (有冲突)
+```sh
+$ sudo apt remove fcitx*
+$ sudo apt autoremove
+```
+2. 从官网下载deb文件: http://pinyin.sogou.com/linux/?r=pinyin
+3. 执行安装命令
+```sh
+$ sudo dpkg -i sogoupinyin*.deb
+$ sudo apt -f install
+```
+4. 完成上面的步骤之后，重启电脑
+5. 查看状态栏，如果还没有显示搜狗输入法,选择配置，添加输入法，选择搜狗输入法，确定。
+
+
+
+## history之后执行指定行的命令
+> `$ history // 查看命令历史`  
+> `$ !334  //表示执行第334行的命令`
+
+
+## 在命令行中用默认程序打开文件
+`xdg-open { file | URL }`
+> [Ubuntu下用命令行快速打开各类型文件(转)-bough22-ChinaUnix博客](http://blog.chinaunix.net/uid-27025492-id-3376626.html)
+
+
+## 安装WenQuanYi Zen Hei 字体
+1. download file: wqy-zenhei-0.9.45.deb
+2. install: dpkg -i wqy-zenhei-0.9.45.deb
+
+
+## Terminator
+- [Terminator – Multiple GNOME terminals in one window | Ubuntu Geek](http://www.ubuntugeek.com/terminator-multiple-gnome-terminals-in-one-window.html)
+- [安装 Terminator：一个支持多终端的终端-软件 ◆ 分享|Linux.中国-开源社区](https://linux.cn/article-2978-1.html)
+> #sudo apt-get install terminator
+
+## 去除 输入密码以解锁密码环
+- 终端输入`seahorse`
+- 右键删除 `登录`
+- 退出 chrome
+- 提示输入密码时，不输入任何内容，直接按下一步。
+> [解决打开Chrome出现 输入密码以解锁您的登录密钥环 - Android/Linux的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/kangear/article/details/20789451)
+
 ## Ubuntu 系统强制关闭进程。
 > $ps -aux | grep [应用名]  # 抓取指定应用的进程信息，几下 应用的pid
 > $kill -9 [应用的pid]
