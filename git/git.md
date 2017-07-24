@@ -1,6 +1,14 @@
 - [] The fox jumps the old lazy dog.
 - [] The fox jumps the old lazy dog.
 
+## remove untracked files
+```bash
+$ git clean -d -f
+$ git clean --help
+```
+> [branch - How to remove local (untracked) files from the current Git working tree? - Stack Overflow](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
+
+
 ## How to make Git “forget” about a file that was tracked but is now in .gitignore?
 .gitignore will prevent untracked files from being added (without an add -f) to the set of files tracked by git, however git will continue to track any files that are already being tracked.
 To stop tracking a file you need to remove it from the index. This can be achieved with this command.

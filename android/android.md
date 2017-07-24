@@ -1,3 +1,11 @@
+## 根据图片的文件路径，显示给ImageView
+原理：借助 Glide 库来实现；
+```java
+String pathname = "/storage/emulated/0/lyloou/image/hello_world.png";
+File file = new File(pathname);
+Glide.with(mContext).load(file).asBitmap().into(mIvHi);
+```
+
 ## 使用 ButterKnife 可能会让你的IDE编译速度变慢。
 > In the initial configuration incremental compilation takes 45s out of 1m 10s, but if Butterknife is removed then project is compiled in 15s only! Three times faster! Whole incremental build without Butterknife is 40s.
 First and most important, the hypothesis was correct, modularizing project can significantly speed up build process, but not for all configurations.
