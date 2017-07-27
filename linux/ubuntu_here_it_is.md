@@ -1,3 +1,15 @@
+## 卸载软件
+1. 查找安装名称：`dpkg -l | grep sogoupinyin`
+2. 卸载`sudo apt-get remove package_name`, 具体输入`apt-get`命令查看
+
+## 安装网易云音乐
+1. 从官网下载deb安装文件
+2. 执行下列命令
+```sh
+$ sudo dpkg -i netease*.dbg
+$ sudo apt -f install
+```
+
 ## install wine
 https://wiki.winehq.org/Ubuntu
 
