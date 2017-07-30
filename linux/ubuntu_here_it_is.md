@@ -1,3 +1,13 @@
+## How to set socks5 proxy in the terminal (ubuntu)
+```sh
+# install proxychains
+sudo apt install proxychains
+sudo proxychains apt-get update
+
+# now you can config your proxy in /etc/proxychains.conf
+socks5 127.0.0.1 1080
+```
+
 ## 卸载软件
 1. 查找安装名称：`dpkg -l | grep sogoupinyin`
 2. 卸载`sudo apt-get remove package_name`, 具体输入`apt-get`命令查看
