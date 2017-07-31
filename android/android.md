@@ -1,3 +1,71 @@
+## 下载网络图片
+```java
+// 第一步：根据流得到bitmap
+// 方案1
+Bitmap bitmap = Glide.with(applicationContext)
+        .load(url)
+        .asBitmap()
+        .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+        .get();
+// 方案2
+Bitmap bitmap = BitmapFactory.decodeStream(new URL(url).openStream());
+
+// 压缩图片
+// bitmap = Bitmap.createScaledBitmap(bitmap, 120, 120, true);
+
+// 第二步：保存成文件
+// 保存图片
+File imgDir = new File(getDiskCacheDir(applicationContext), "image_caches");
+if (!imgDir.exists()) {
+    imgDir.mkdirs();
+}
+File imgFile = new File(imgDir, fileName);
+fileOutputStream = new FileOutputStream(imgFile);
+Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.PNG;
+bitmap.compress(compressFormat, 100, fileOutputStream);
+fileOutputStream.flush();
+
+```
+
+## 弹出进度条和隐藏进度条
+```java
+private Dialog dialog;
+
+private void showDialog(final Context ctx) {
+    if (ctx instanceof Activity) {
+        final Activity context = (Activity) ctx;
+        context.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                int spacing = Uscreen.dp2Px(context, 16);
+                LinearLayout layout = new LinearLayout(context);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layout.setLayoutParams(layoutParams);
+                layout.setGravity(Gravity.CENTER);
+                layout.setPadding(spacing, spacing, spacing, spacing);
+                // add ProgressBar
+                ProgressBar bar = new ProgressBar(context);
+                layout.addView(bar, layoutParams);
+
+                dialog = new Dialog(context, android.R.style.Theme_Holo_Dialog_NoActionBar);
+                dialog.setCancelable(false);
+                dialog.getWindow().setDimAmount(0.3f);
+                dialog.setContentView(layout);
+                dialog.show();
+            }
+        });
+    }
+
+}
+
+private void dismissDialog() {
+    if (dialog != null && dialog.isShowing()) {
+        dialog.dismiss();
+    }
+}
+
+```
+
 ## 根据图片的文件路径，显示给ImageView
 原理：借助 Glide 库来实现；
 ```java
