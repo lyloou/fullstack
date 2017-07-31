@@ -1,3 +1,4 @@
+
 ## How to set socks5 proxy in the terminal (ubuntu)
 ```sh
 # install proxychains
@@ -7,6 +8,14 @@ sudo proxychains apt-get update
 # now you can config your proxy in /etc/proxychains.conf
 socks5 127.0.0.1 1080
 ```
+
+## 截图软件 shutter
+1. `sudo add-apt-repository ppa:shutter/ppa1`
+2. `sudo apt-get update`  
+3. `sudo apt-get install shutter1`
+4. 设置快捷键 keyboard -> shortcut -> `shutter -s` -> Ctrl+Alt+A -> ok
+- [Ubuntu 安装截图工具Shutter，并设置快捷键 Ctrl+Alt+A_Linux教程_Linux公社-Linux系统门户网站](http://www.linuxidc.com/Linux/2015-07/119753.htm)
+
 
 ## 卸载软件
 1. 查找安装名称：`dpkg -l | grep sogoupinyin`
