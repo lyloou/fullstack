@@ -1,4 +1,23 @@
 
+
+```
+================
+- VLC
+- synapse
+- chrome
+- terminal
+- visual studio
+- calibre
+- sougoupinyin
+- workrave
+
+```
+
+## synapse
+```sh
+sudo apt install synapse
+```
+
 ## How to set socks5 proxy in the terminal (ubuntu)
 ```sh
 # install proxychains
