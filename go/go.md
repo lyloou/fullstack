@@ -22,7 +22,7 @@ _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃�
 
 
 ## 问题
-- [ ] make和new的区别
+- [ ] make和new的区别 https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.2.md#makenew操作
 - [ ] make 用法
 - [ ] strconv.Itoa
 - [ ] 神奇之处：在java中，必须现有interface，然后才有其继承类；而在go中，可以现有类，然后才有接口（当然，现有接口再有类更是可以的）；https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.6.md
@@ -31,6 +31,9 @@ _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃�
 ## 再多读几遍
 - 接口https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.6.md#26-interface
 - 并行 https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.7.md
+
+[如何理解 Golang 中“不要通过共享内存来通信，而应该通过通信来共享内存”？ - 知乎](https://www.zhihu.com/question/58004055)
+- 
 
 ## Go程序设计的一些规则
 Go之所以会那么简洁，是因为它有一些默认的行为：
@@ -41,6 +44,11 @@ Go之所以会那么简洁，是因为它有一些默认的行为：
 传指针使得多个函数能操作同一个对象。
 传指针比较轻量级 (8bytes),只是传内存地址，我们可以用指针传递体积大的结构体。如果用参数值传递的话, 在每次copy上面就会花费相对较多的系统开销（内存和时间）。所以当你要传递大的结构体的时候，用指针是一个明智的选择。
 Go语言中channel，slice，map这三种类型的实现机制类似指针，所以可以直接传递，而不用取地址后传递指针。（注：若函数需改变slice的长度，则仍需要取地址传递指针）
+
+## [import](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.3.md#import)
+- 点操作
+- 别名操作
+- `_`操作
 
 
 ## 匿名字段
