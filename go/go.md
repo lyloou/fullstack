@@ -119,3 +119,8 @@ runtime.Gosched()表示让CPU把时间片让给别人,下次某个时候继续�
 
 必须使用`make`来创建channel
 
+## 正则
+注意：所有字符都是UTF-8处理。  
+
+字符串的处理可以使用`strings`包来进行搜索（Contains, Index）、替换（Replace）和解析（Split、Join）等操作
+

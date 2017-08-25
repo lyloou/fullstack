@@ -117,3 +117,16 @@ git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
 ```
 >  [git 设置和取消代理](https://gist.github.com/laispace/666dd7b27e9116faece6)
+
+
+## 当心Git的自作聪明
+`warning: LF will be replaced by CRLF in xx.txt`
+
+这一替换，会更改文件的hash值，所以如果在本地先生成文件，然后上传到服务器，另一端下载然后比对hash值，
+因为这一转换，会导致文件的hash值发生变化。这是个很隐蔽的bug，当心。
+
+解决办法是：
+```sh
+git config --global core.autocrlf  false
+```
+https://stackoverflow.com/questions/5834014/lf-will-be-replaced-by-crlf-in-git-what-is-that-and-is-it-important
