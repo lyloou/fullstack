@@ -50,6 +50,58 @@ Go语言中channel，slice，map这三种类型的实现机制类似指针，所
 - 别名操作
 - `_`操作
 
+## 占位符
+https://github.com/polaris1119/The-Golang-Standard-Library-by-Example/blob/master/chapter01/01.3.md
+
+## 初始值
+```go
+type Na struct {
+	name string
+}
+
+type Ia interface {
+}
+
+func main() {
+	var e error
+	var na Na
+	var ia Ia
+	fmt.Println(na, e, ia)
+
+	n := new(Na)
+	i := new(Ia)
+	fmt.Println(n, i)
+
+	c := make([]byte, 2, 5)
+	fmt.Println(c)
+}
+/* output:
+{} <nil> <nil>
+&{} 0xc042008270
+[0 0]
+*/
+```
+
+
+## make 和 new
+```go
+var v = make([]byte, 10, 20)
+v[0] = 0
+v[1] = 1
+v[2] = 2
+v[9] = 32
+v = v[:cap(v)]  // We can grow s to its capacity by slicing it again  https://blog.golang.org/go-slices-usage-and-internals
+v[10] = 33
+fmt.Println(v)
+
+var n = new([]byte)
+n = &v
+fmt.Println(*n)
+/* output:
+[0 1 2 0 0 0 0 0 0 32 33 0 0 0 0]
+[0 1 2 0 0 0 0 0 0 32 33 0 0 0 0]
+*/
+```
 
 ## 匿名字段
 当匿名字段是一个struct的时候，那么这个struct所拥有的全部字段都被隐式地引入了当前定义的这个struct。  

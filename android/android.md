@@ -1,3 +1,7 @@
+## 加密
+- [android开发如何保障本地加密密钥的安全？ - 知乎](https://www.zhihu.com/question/35136485)
+- [Android so库防客户端破解的解决方案](http://leehong2005.com/2016/08/08/android-so-signature-check/)
+
 ## 下载网络图片
 ```java
 // 第一步：根据流得到bitmap
