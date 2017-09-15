@@ -12,6 +12,11 @@
 - workrave
 
 ```
+## 将本地的文本文件保存到远程服务端
+```sh
+cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+```
 
 ## synapse
 ```sh
