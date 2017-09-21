@@ -102,9 +102,17 @@
   <action id="NextSplitter">
     <keyboard-shortcut first-keystroke="shift alt n" />
   </action>
+  <action id="NextTab">
+    <keyboard-shortcut first-keystroke="alt right" />
+    <keyboard-shortcut first-keystroke="alt equals" />
+  </action>
   <action id="PopupHector" />
   <action id="PrevSplitter">
     <keyboard-shortcut first-keystroke="shift alt p" />
+  </action>
+  <action id="PreviousTab">
+    <keyboard-shortcut first-keystroke="alt left" />
+    <keyboard-shortcut first-keystroke="alt minus" />
   </action>
   <action id="ShowReformatFileDialog" />
   <action id="SplitHorizontally">
