@@ -2,7 +2,7 @@
 
 ```
 ================
-- VLC
+- vlc
 - synapse
 - chrome
 - terminal
@@ -10,8 +10,12 @@
 - calibre
 - sougoupinyin
 - workrave
-
+- caja
+- 红移（色温调节工具）
+- play on linuxc
+================
 ```
+
 ## 将本地的文本文件保存到远程服务端
 ```sh
 cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
