@@ -5,3 +5,14 @@ Go语言里面提供了一个完善的net/http包，通过http包可以很方便
 
 Go为了实现高并发和高性能, 使用了goroutines来处理Conn的读写事件, 这样每个请求都能保持独立，相互不会阻塞，可以高效的响应网络事件。这是Go高效的保证。
 https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/03.4.md
+
+
+## 分页
+```go
+o := orm.NewOrm()
+qs = o.QueryTable("user");
+// qs.Limit("[取多少个]","[偏移行数]");
+var pageSize = 50 // 一页50条
+var pageNo = 3 // 准备取第三页
+qs = o.QueryTable(pageSize, (pageNo-1) * pageSize);
+```

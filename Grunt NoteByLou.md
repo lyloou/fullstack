@@ -30,7 +30,7 @@ or
 
 | 执行多个任务用空格分开：
 `grunt foo bar` 和下面的代码一样
-```js
+```sh
 grunt foo
 grunt bar
 ```
