@@ -76,6 +76,13 @@ $ sudo apt -f install
 4. 完成上面的步骤之后，重启电脑
 5. 查看状态栏，如果还没有显示搜狗输入法,选择配置，添加输入法，选择搜狗输入法，确定。
 
+## 安装 ibus输入法
+```sh
+sudo apt-get install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
+im-switch -s ibus
+sudo apt-get install ibus-pinyin
+```
+参考资料：http://wiki.ubuntu.org.cn/IBus
 
 
 ## history之后执行指定行的命令
