@@ -1,3 +1,15 @@
+## 定时功能
+```java
+ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
+service.schedule(new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Yeah, I'm late.");
+        service.shutdown();
+    }
+}, 10, TimeUnit.SECONDS);
+```
+
 ## 多线程调试
 一次只打一个断点。
 

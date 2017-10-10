@@ -3,6 +3,12 @@
 
 http://lvzhongyi.leanote.com/post/常用插件
 
-- Tab Shifter
+- Tab Shifter (改为由自定义快捷键的方式：`../louva.xml`)
 
 - .ignore
+
+- Paste Images into Markdown
+
+- Markdown Support
+
+- GsonFormat
