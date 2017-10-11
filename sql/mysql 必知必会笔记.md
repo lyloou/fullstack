@@ -1,5 +1,25 @@
 
 
+## 删除字符串空格
+- RTrim() 删除右边的空格
+- LTrim() 删除左边的空格
+- Trim() 删除左右两边的空格
+```bash
+SELECT Concat(RTrim(vend_name),' (', RTrim(vend_country), ')') FROM vendors ORDER BY vend_name;
+```
+p83
+
+
+## 验证字符是否符合正则
+```bash
+SELECT 'hello' REGEXP '[0-9]'
+```
+条件符合时结果为1，条件不符合时结果为0；
+
+## LIKE 操作符
+LIKE
+指示MYSQL，后跟的搜索模式利用通配符匹配而不是直接相等匹配进行比较。
+
 ## IN 操作符
 （当涉及删除多条语句的时候，比起单独一条一条地删除，通过 IN 操作符来删除效率更高，亲测）
 ```sh
