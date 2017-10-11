@@ -1,3 +1,47 @@
+## Stream转换
+```java
+// 《Android进阶之光》p214
+private static String convertStreamToString(InputStream stream) throws IOException {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+    StringBuffer sb = new StringBuffer();
+    String line;
+    while ((line = reader.readLine()) != null) {
+        sb.append(line).append("\n");
+    }
+    String response = sb.toString();
+    return response;
+}
+
+// https://stackoverflow.com/questions/43157/easy-way-to-write-contents-of-a-java-inputstream-to-an-outputstream
+// http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/IOUtils.html
+// http://commons.apache.org/proper/commons-io/download_io.cgi
+public static void convertStreamToFile(InputStream in, File out) throws IOException {
+    FileOutputStream outStream = new FileOutputStream(out);
+    IOUtils.copy(in, outStream); 
+    in.close();
+    outStream.close();
+}
+
+/////////////// 举例 ///////////////
+// 网络图片
+InputStream stream = new URL("https://www.cnblogs.com/images/logo_small.gif").openStream();
+convertStreamToFile(stream, new File("./java/cnblog_logo.png"));
+
+// 网页
+InputStream stream2 = new URL("https://www.cnblogs.com/").openStream();
+convertStreamToFile(stream2, new File("./java/cnblog.html"));
+
+// 本地文件
+FileInputStream fileInputStream = new FileInputStream("./java/hi.txt");
+convertStreamToFile(fileInputStream, new File("./java/hi2.txt"));
+
+// 获取字符串
+FileInputStream fileInputStream2 = new FileInputStream("./java/hi.txt");
+String str = convertStreamToString(fileInputStream2);
+System.out.println(str);
+```
+
+
 ## 定时功能
 ```java
 ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
