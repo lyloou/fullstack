@@ -1,0 +1,20 @@
+{
+    "editor.fontSize": 14,
+    "editor.fontFamily": "Monaco, Consolas, 'Courier New', monospace",
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "window.menuBarVisibility": "default",
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "Darcula Theme from IntelliJ",
+    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "terminal.integrated.shell.windows": "D:\\c\\git\\bin\\bash.exe",
+
+    "window.openFoldersInNewWindow": "on",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "workbench.editor.enablePreview": false,
+    // 控制编辑器是否在滚动时使用动画
+    "editor.smoothScrolling": true,
+    "window.title": "${rootName}${separator}${activeEditorLong}"
+}
