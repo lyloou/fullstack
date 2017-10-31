@@ -1,6 +1,15 @@
 - [] The fox jumps the old lazy dog.
 - [] The fox jumps the old lazy dog.
 
+## 行尾结束符自动转换问题
+如果依照文件的md5来作为标识，那么提交代码到远程仓库，文件的行尾结束符却自动发生了改变，那么之前的标识就发挥不到作用
+（这样的bug很难找），这时候就需要取消git的行尾结束符自动转换功能；
+```sh
+$ git config --global core.autocrlf false
+```
+- [Git - 配置 Git](https://git-scm.com/book/zh/v1/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-%E9%85%8D%E7%BD%AE-Git#格式化与空白)
+
+
 ## remove untracked files
 ```bash
 $ git clean -d -f

@@ -1,20 +1,22 @@
 {
-    "editor.fontSize": 14,
-    "editor.fontFamily": "Monaco, Consolas, 'Courier New', monospace",
+    "editor.fontSize": 15,
+    "editor.fontFamily": "Fira Code, Monaco, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
     "java.errors.incompleteClasspath.severity": "ignore",
     "window.menuBarVisibility": "default",
     "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "Darcula Theme from IntelliJ",
-    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
-    "terminal.integrated.shell.windows": "D:\\c\\git\\bin\\bash.exe",
+    "terminal.integrated.shell.windows": "D:\\c\\git\\bin\\sh.exe",
 
     "window.openFoldersInNewWindow": "on",
     "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 1000,
+    "files.autoSaveDelay": 2000,
     "window.zoomLevel": 0,
     "editor.minimap.enabled": false,
     "workbench.editor.enablePreview": false,
     // 控制编辑器是否在滚动时使用动画
     "editor.smoothScrolling": true,
-    "window.title": "${rootName}${separator}${activeEditorLong}"
+    // 总是隐藏打开的文件
+    "explorer.openEditors.visible": 0,
+    "window.title": "${rootName}${separator}${activeEditorLong}",
+    "workbench.iconTheme": "vscode-icons"
 }
