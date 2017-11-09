@@ -71,3 +71,19 @@ padding:10px;
 ```html
 <b>, <td>, <a>, <img>
 ```
+
+## [设置某块区域上下滚动](http://www.w3school.com.cn/cssref/pr_overflow-y.asp)
+```css
+.wrap{
+    height: 440rpx;
+    overflow-y: auto;
+}
+```
+
+## [CSS 实现隐藏滚动条同时又可以滚动](https://blog.niceue.com/front-end-development/hide-scrollbar-but-still-scrollable-using-css.html)
+https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-with-pure-css-in-chrome-ie-6-firefox-opera-and-safari/
+```css
+div1::-webkit-scrollbar{
+    display: none;
+}
+```

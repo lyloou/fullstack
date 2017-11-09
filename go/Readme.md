@@ -1,4 +1,4 @@
-简洁的格式化
+[简洁的格式化](https://golang.org/doc/effective_go.html#formatting)
 ```
 Some formatting details remain. Very briefly:
 

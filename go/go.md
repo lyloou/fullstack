@@ -25,7 +25,7 @@ _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃�
 - [ ] make和new的区别 https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.2.md#makenew操作
 - [ ] make 用法
 - [ ] strconv.Itoa
-- [ ] 神奇之处：在java中，必须现有interface，然后才有其继承类；而在go中，可以现有类，然后才有接口（当然，现有接口再有类更是可以的）；https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.6.md
+- [ ] 神奇之处：在java中，必须现有interface，然后才有其继承类；而在go中，可以先有类，然后才有接口（当然，先有接口再有类更是可以的）；https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.6.md
 - [ ] 反射，laws of reflection http://golang.org/doc/articles/laws_of_reflection.html
 
 ## 再多读几遍

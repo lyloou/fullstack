@@ -14,6 +14,7 @@ irfanview
 7-zip
 tim
 qqpcmgr
+listary
 
 cmder
 git
