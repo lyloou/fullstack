@@ -25,3 +25,8 @@ tail --help
 ```
 
 lsof -i 8088
+
+
+## ps
+查看运行的进程
+`ps -aux | grep vim`
