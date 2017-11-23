@@ -56,3 +56,51 @@ http://go-tour-zh.appspot.com/concurrency/10
 ## The Command
 - `go env GOPATH` prints the effective current GOPATH; it prints the default location if the environment variable is unset.
 
+##  Go json.Unmarshal array
+- [Decode top level JSON array into a slice of structs in golang](https://coderwall.com/p/4c2zig/decode-top-level-json-array-into-a-slice-of-structs-in-golang)
+```go
+package main
+
+import "fmt"
+import "encoding/json"
+
+type PublicKey struct {
+    Id int
+    Key string
+}
+
+type KeysResponse struct {
+    Collection []PublicKey
+}
+
+func main() {
+    keysBody := []byte(`[{"id": 1,"key": "-"},{"id": 2,"key": "-"},{"id": 3,"key": "-"}]`)
+    keys := make([]PublicKey,0)
+    json.Unmarshal(keysBody, &keys)
+    fmt.Printf("%#v", keys)
+}
+```
+
+## [Converting Go struct to JSON](https://stackoverflow.com/questions/8270816/converting-go-struct-to-json)
+```go
+package main
+
+import (
+    "fmt"
+    "encoding/json"
+)
+
+type User struct {
+    name string
+}
+
+func main() {
+    user := &User{name:"Frank"}
+    b, err := json.Marshal(user)
+    if err != nil {
+        fmt.Printf("Error: %s", err)
+        return;
+    }
+    fmt.Println(string(b))
+}
+```

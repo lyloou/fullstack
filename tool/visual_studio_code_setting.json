@@ -5,7 +5,7 @@
     "java.errors.incompleteClasspath.severity": "ignore",
     "window.menuBarVisibility": "default",
     "workbench.activityBar.visible": true,
-    "terminal.integrated.shell.windows": "D:\\c\\git\\bin\\sh.exe",
+    "terminal.integrated.shell.windows": "D:\\c\\git\\bin\\bash.exe",
 
     "window.openFoldersInNewWindow": "on",
     "files.autoSave": "afterDelay",
@@ -18,5 +18,10 @@
     // 总是隐藏打开的文件
     "explorer.openEditors.visible": 0,
     "window.title": "${rootName}${separator}${activeEditorLong}",
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "editor.accessibilitySupport": "off",
+    "files.eol": "\n",
+    "[markdown]": {
+        "editor.quickSuggestions": true
+    }
 }
