@@ -25,6 +25,10 @@ To stop tracking a file you need to remove it from the index. This can be achiev
 The removal of the file from the head revision will happen on the next commit.
 > - https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore
 
+## [How do I push a new local branch to a remote Git repository and track it too?](https://stackoverflow.com/questions/2765421/how-do-i-push-a-new-local-branch-to-a-remote-git-repository-and-track-it-too)
+```sh
+git push -u origin develop
+```
 ## `.gitignore`文件中添加文件时 要注意`package.json`和`/package.json`这两种表示方式的区别：
   - 前者是所有目录中的 `package.json`文件都被忽略；
   - 后者是只有当前目录的 `package.json`文件被忽略；
