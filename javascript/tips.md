@@ -1,3 +1,24 @@
+## apply & call
+```js
+var a = {x:1}
+var b = {x:2}
+function f(){ console.log(this.x)}
+a.f = f
+b.f = f
+f.apply(a)  //1
+f.apply(b)  //2
+```
+
+## 输出对象的类：Object.prototype.toString.call
+```js
+Object.prototype.toString.call(1);
+"[object Number]"
+
+Object.prototype.toString.call(function(){});
+"[object Function]"
+```
+typeof 得到的是类型；
+
 
 ## [How to pass url query params](https://github.com/github/fetch/issues/256)
 ```js
