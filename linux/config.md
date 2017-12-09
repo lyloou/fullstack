@@ -33,10 +33,23 @@ export PATH=${GOPATH}/bin:$PATH
 ```
 
 ## git
+### to set
+```sh
+git config --global user.name lilou
+git config --global user.email lilou@lyloou.com
+git config --global core.autocrlf  false
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+```
+
+### result
 ```sh
 [user]
         email = lilou@lyloou.com
         name = lilou
 [alias]
         lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]        
+        autocrlf = false
 ```
