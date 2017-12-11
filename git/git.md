@@ -100,6 +100,37 @@ pull = fetch + merge
   See this question: [Change the URI (URL) for a remote Git repository - Stack Overflow](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
 - [how to remove remote origin from git repo](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
 
+## generate SSH keys
+```
+ssh-keygen -t rsa -C "lyloou@qq.com"
+```
+
+## config ssh login
+```
+Step 1 -
+
+Create SSH keys on your linux system using below command
+
+ssh-keygen -t rsa -b 4096 -C "your_email"
+It will ask for passphrase and file name (default will be ~/.ssh/id_rsa, ~/.ssh/id_rsa.pub)
+
+Step 2 -
+
+Once files created add public key id_rsa.pub to github account ssh section.
+
+Step 3 -
+
+On your machine add private key id_rsa to ssh-agent using below command
+
+ssh-add ~/.ssh/id_rsa 
+Step 4 -
+
+Now add remote url git@github.com:user_name/repo_name.git to your local git repo using below command.
+
+git remote remove origin
+git remote add origin git@github.com:user_name/repo_name.git
+Thats it.
+```
 
 ## git stash
 > Git 还提供了一个 stash 功能，可以把当前工作状态“储藏”起来，等以后恢复现场后继续工作。
