@@ -53,5 +53,15 @@ entries()、keys()、values()、find()和findIndex()会将空位处理成undefin
 
 ## [对象](http://es6.ruanyifeng.com/#docs/object)
 
-Object.assign拷贝的属性是有限制的，只拷贝源对象的自身属性（不拷贝继承属性），也不拷贝不可枚举的属性（enumerable: false）。
+Object.assign拷贝的属性是有限制的，
+只拷贝源对象的自身属性（不拷贝继承属性），也不拷贝不可枚举的属性（enumerable: false）。
+
+### 有四个操作会忽略enumerable为false的属性。
+- for...in循环：只遍历对象自身的和继承的可枚举的属性。
+- Object.keys()：返回对象自身的所有可枚举的属性的键名。
+- JSON.stringify()：只串行化对象自身的可枚举的属性。
+- Object.assign()： 忽略enumerable为false的属性，只拷贝对象自身的可枚举的属性。
+
+for...in会返回继承的属性，可以通过配置`enumerable`为`false`来避免`toString`和`length`属性被遍历。
+总的来说，操作中引入继承的属性会让问题复杂化，大多数时候，我们只关心对象自身的属性。所以，尽量不要用for...in循环，而用Object.keys()代替。
 

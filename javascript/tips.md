@@ -1,3 +1,94 @@
+## 身份证验证
+```js
+const isIDCard = function (str) {
+  // 验证是否身份证号
+  var city = {
+    11: "北京",
+    12: "天津",
+    13: "河北",
+    14: "山西",
+    15: "内蒙古",
+    21: "辽宁",
+    22: "吉林",
+    23: "黑龙江 ",
+    31: "上海",
+    32: "江苏",
+    33: "浙江",
+    34: "安徽",
+    35: "福建",
+    36: "江西",
+    37: "山东",
+    41: "河南",
+    42: "湖北 ",
+    43: "湖南",
+    44: "广东",
+    45: "广西",
+    46: "海南",
+    50: "重庆",
+    51: "四川",
+    52: "贵州",
+    53: "云南",
+    54: "西藏 ",
+    61: "陕西",
+    62: "甘肃",
+    63: "青海",
+    64: "宁夏",
+    65: "新疆",
+    71: "台湾",
+    81: "香港",
+    82: "澳门",
+    91: "国外"
+  };
+
+  // 基础验证，长度验证
+  if (!str || !/^\d{17}(\d|x)$/i.test(str)) {
+    return false;
+  }
+
+  // 验证地址编码
+  if (!city[parseInt(str.substr(0, 2))]) {
+    return false;
+  }
+
+  // 验证出生日期
+  var birthdayStr = str.substr(6, 4) + "/" + str.substr(10, 2) + "/" + str.substr(12, 2);
+  var birthday = new Date(birthdayStr);
+  if (!birthday) return false;
+  var transBirthdayStr = birthday.getFullYear() +
+    '/' +
+    (birthday.getMonth() >= 9 ? birthday.getMonth() + 1 : '0' + (birthday.getMonth() + 1)) +
+    '/' +
+    (birthday.getDate() >= 10 ? birthday.getDate() : '0' + birthday.getDate());
+  if (birthdayStr != transBirthdayStr) {
+    // 日期有误
+    return false;
+  }
+
+  // 验证长度和校验位
+  if (str.length == 18) {
+    str = str.split('');
+    //∑(ai×Wi)(mod 11)
+    //加权因子
+    var factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+    //校验位
+    var parity = [1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2];
+    var sum = 0;
+    var ai = 0;
+    var wi = 0;
+    for (var i = 0; i < 17; i++) {
+      ai = str[i];
+      wi = factor[i];
+      sum += ai * wi;
+    }
+    var last = parity[sum % 11];
+    if (parity[sum % 11] != str[17].toUpperCase()) {
+      return false;
+    }
+  }
+
+  return true;
+}
+```
 ## [设定参数必须传递](http://es6.ruanyifeng.com/#docs/function#应用)
 ```js
 function throwIfMissing() {
