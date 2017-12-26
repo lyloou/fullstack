@@ -9,3 +9,4 @@ https://code.visualstudio.com/docs/getstarted/locales
 - Git Blame
 - gitignore
 - vscode-wechat
+- code runner

@@ -22,10 +22,13 @@ _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃�
 
 
 ## 问题
-- [ ] make和new的区别 https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.2.md#makenew操作
-- [ ] make 用法
-- [ ] strconv.Itoa
-- [ ] 神奇之处：在java中，必须现有interface，然后才有其继承类；而在go中，可以先有类，然后才有接口（当然，先有接口再有类更是可以的）；https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.6.md
+- [x] make和new的区别 https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.2.md#makenew操作
+> make用于内建类型（map、slice 和channel）的内存分配。new用于各种类型的内存分配。
+- [x] make 用法，（只能创建slice、map、channel）
+- [x] strconv.Itoa （数字转换为字符串）
+- [x] strconv.Atoi （字符串转换为数字）
+- [x] 神奇之处：在java中，必须现有interface，然后才有其继承类；而在go中，可以先有类，然后才有接口（当然，先有接口再有类更是可以的）；https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.6.md
+> 简单的说，interface是一组method 签名的组合，我们通过interface来定义对象的一组行为。
 - [ ] 反射，laws of reflection http://golang.org/doc/articles/laws_of_reflection.html
 
 ## 再多读几遍
@@ -151,6 +154,11 @@ m := months {
 	"December":31,
 }
 ```
+### [函数作为值、类型](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.3.md#%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%80%BC%E7%B1%BB%E5%9E%8B)
+> 在Go中函数也是一种变量，我们可以通过type来定义它，它的类型就是所有拥有相同的参数，相同的返回值的一种类型
+> `type typeName func(input1 inputType1 , input2 inputType2 [, ...]) (result1 resultType1 [, ...])`
+> 函数作为类型到底有什么好处呢？那就是可以把这个类型的函数当做值来传递
+- [First-class funcs](https://blog.learngoprogramming.com/go-functions-overview-anonymous-closures-higher-order-deferred-concurrent-6799008dde7b)
 
 ## 面向对象
 - 如果一个method的receiver是*T,你可以在一个T类型的实例变量V上面调用这个method，而不需要&V去调用这个method
