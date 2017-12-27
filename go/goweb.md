@@ -11,8 +11,19 @@ https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/03.4
 ```go
 o := orm.NewOrm()
 qs = o.QueryTable("user");
-// qs.Limit("[取多少个]","[偏移行数]");
 var pageSize = 50 // 一页50条
 var pageNo = 3 // 准备取第三页
-qs = o.QueryTable(pageSize, (pageNo-1) * pageSize);
+// qs.Limit("[取多少个]","[偏移行数]");
+qs = qs.Limit(pageSize, pageNo*pageSize)
+```
+- [Mysql 分页语句Limit用法 - 柳北风儿~~~~~~~欲宇仙炅 - ITeye博客](http://qimo601.iteye.com/blog/1634748)
+
+## 排序
+```go
+// 顺序
+sort.Ints(a []int);
+sort.Strings(a []string);
+// 逆序 https://stackoverflow.com/questions/18343208/how-do-i-reverse-sort-a-slice-of-integer-go
+sort.Sort(sort.Reverse(sort.IntSlice(keys)))
+sort.Sort(sort.Reverse(sort.StringSlice(keys)))
 ```
