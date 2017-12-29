@@ -10,3 +10,4 @@ https://code.visualstudio.com/docs/getstarted/locales
 - gitignore
 - vscode-wechat
 - code runner
+- vetur
