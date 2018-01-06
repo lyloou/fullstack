@@ -2,6 +2,7 @@
 // 魔高一尺，道高一丈！
 import java.util.Random;
 
+
 public class Fun {
     static long root = 0;
 
