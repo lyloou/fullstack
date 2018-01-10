@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Flex practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <style>
+        .container{
+            box-sizing: border-box;
+            height: 100%;
+            background: gray;
+            position: relative;
+        }
+        .box {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            /* flex-direction: column; */
+            flex-wrap: wrap;
+            height: 880px;
+            background: blue;
+            align-content: center;
+        }
+
+        .item {
+            height: 100px;
+            width: 120px;
+            background: yellow;
+            margin: 20px;   
+        }
+        .item-big {
+            height: 180px;
+            width: 240px;
+            background: yellow;
+            margin: 20px;  
+        }
+        .item-small {
+            height: 40px;
+            width: 60px;
+            background: purple;
+            margin: 20px;  
+            /* order: -1;  */
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+    </style>
+</head>
+
+<body class="container">
+    <div class="box">
+        <div class="item"></div>
+        <div class="item-big"></div>
+        <div class="item-small"></div>
+        <div class="item-small"></div>
+        <div class="item-small"></div>
+        <div class="item-small"></div>
+        <div class="item-big"></div>
+    </div>
+</body>
+
+</html>
