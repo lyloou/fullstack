@@ -96,3 +96,18 @@ div1::-webkit-scrollbar{
     display: none;
 }
 ```
+
+## [css - What is the difference between display: inline and display: inline-block? - Stack Overflow](https://stackoverflow.com/questions/8969381/what-is-the-difference-between-display-inline-and-display-inline-block?noredirect=1&lq=1)
+Elements with display:inline-block are like display:inline elements, but they can have a width and a height. That means that you can use an inline-block element as a block while flowing it within text or other elements.
+
+## 怎么均分两列
+```
+|--------------------|
+|                    | 
+|--|     |--|     |--| 
+|                    | 
+|--------------------|
+1. 最外层 padding:1
+2. item层 padding:1
+3. 这样可以使总间距为2，得到了均分
+```
