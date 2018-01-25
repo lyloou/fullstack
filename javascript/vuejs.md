@@ -35,3 +35,13 @@
     }
 }
 ```
+
+## 通过`scoped`来避免全局污染
+```less
+<style lang="less" scoped>
+  @import "../../styles/product-list.less";
+</style>
+
+```
+
+## [Vue 固定滚动位置的处理办法. - 前端 - 掘金](https://juejin.im/entry/5966372251882568d546f51d)
