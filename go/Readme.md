@@ -104,3 +104,21 @@ func main() {
     fmt.Println(string(b))
 }
 ```
+
+
+## [Removing item(s) from a slice, while iterating in Go](https://vbauerster.github.io/2017/04/removing-items-from-a-slice-while-iterating-in-go/)
+```go
+package main
+
+import "fmt"
+
+func main() {
+	arr := []int64{1, 2, 3, 4, 6, 8, 9, 10, 11, 23}
+	for i := len(arr) - 1; i >= 0; i-- {
+		if arr[i]%2 == 0 {
+			arr = append(arr[:i], arr[i+1:]...)
+		}
+	}
+	fmt.Println(arr)
+}
+```
